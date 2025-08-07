@@ -294,13 +294,148 @@ export default function ValorantLanding() {
         </div>
       </section>
 
-      {/* Right Content - Image Placeholder */}
-      <div className="relative">
-        <div className="bg-gray-300 ">
+      {/* Elevate Your Game Section */}
+      <section className="bg-gray-800 py-20">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            {/* Left Content */}
+            <div className="space-y-8">
+              <div>
+                <h2 className="text-5xl lg:text-6xl font-black leading-tight tracking-tight text-white">
+                  <div>ELEVATE YOUR</div>
+                  <div>GAME WITH</div>
+                  <div>PRECISION AND</div>
+                  <div>TEAMWORK IN</div>
+                  <div>VALORANT.</div>
+                </h2>
+              </div>
+              
+              <p className="text-gray-300 text-lg leading-relaxed max-w-lg">
+                Join a community where every player strives for excellence. Together, we make history in every match.
+              </p>
+            </div>
+
+            {/* Right Content - Image Placeholder */}
+            <div className="relative">
+              <div className="bg-gray-300 rounded-lg aspect-video flex items-center justify-center">
+                <div className="text-center">
+                  <div className="w-20 h-16 bg-gray-400 rounded-lg mx-auto mb-4 flex items-center justify-center">
+                    <svg className="w-10 h-8 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
+                  </div>
+                  <div className="w-2 h-2 bg-gray-500 rounded-full mx-auto"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Epic Gameplay Highlights Section */}
+
+      <section className="bg-gray-900 py-20">
+        <div className="max-w-7xl mx-auto px-6">
+          {/* Header */}
+          <div className="text-center mb-16">
+            <p className="text-gray-400 text-sm mb-4">Portfolio</p>
+            <h2 className="text-5xl lg:text-6xl font-black text-white mb-6">
+              EPIC GAMEPLAY HIGHLIGHTS
+            </h2>
+            <p className="text-gray-300 text-lg">
+              Dive into our thrilling gameplay moments!
+            </p>
+          </div>
+
+        {/* Video Cards Grid */}
+          <div className="grid md:grid-cols-3 gap-8 mb-12">
+            {/* Clutch Moments Card */}
+            <div className="space-y-6">
+              <div className="bg-gray-300 rounded-lg aspect-video flex items-center justify-center">
+                <div className="w-16 h-12 bg-gray-400 rounded-lg flex items-center justify-center">
+                  <svg className="w-8 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                  </svg>
+                </div>
+              </div>
+
+              <div>
+                <h3 className="text-2xl lg:text-3xl font-black text-white mb-4">
+                  CLUTCH MOMENTS
+                </h3>
+                <p className="text-gray-400 text-base mb-6">
+                  Watch ours players turn the tide in intense matches.
+                </p>
+
+                <div className="flex flex-wrap gap-2 mb-6">
+                  <span className="px-3 py-1 bg-gray-700 text-sm rounded-full">Clutch Plays</span>
+                  <span className="px-3 py-1 bg-gray-700 text-sm rounded-full">Epic Wins</span>
+                  <span className="px-3 py-1 bg-gray-700 text-sm rounded-full">Teamwork</span>
+                </div>
+
+                <button className="flex items-center space-x-2 text-white hover:text-gray-300 font-medium transition-colors">
+                  <span>View Project</span>
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            {/* Pro Scrims Card */}
+
+            <div className="space-y-6">
+              <div className="bg-gray-300 rounded-lg aspect-video flex items-center justify-center">
+                <div className="w-16 h-12 bg-gray-400 rounded-lg flex items-center justify-center">
+                  <svg className="w-8 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                  </svg>
+                </div>
+              </div>
+
+              <div>
+                <h3 className="text-2xl lg:text-3xl font-black text-white mb-4">
+                  PRO SCRIMS
+                </h3>
+              </div>
+
+
+
+
+
+
+
+
+
+
+
+            </div>
+
+
+
+
+
+
+
+
+
+          </div>
+
+
+
+
+
+
+
+
 
         </div>
+      </section>
 
-      </div>
+
+
+
+
 
 
 
