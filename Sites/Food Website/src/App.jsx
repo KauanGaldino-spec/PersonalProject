@@ -123,8 +123,112 @@ const CulinaryWebsite = () => {
         </div>
       </section>
 
+      {/* Features Section 2 */}
+      <section className="bg-gray-900 px-6 py-16">
+        <div className="max-w-6xl mx-auto text-center">
+          {/* Section Header */}
+          <div className="mb-16">
+            <p className="text-gray-400 text-lg mb-4">Delicious</p>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold uppercase leading-tight mb-6 text-white">
+              EXPLORE OUR
+              <br />
+              FEATURES FOR A
+              <br />
+              HEALTHIER LIFESTYLE
+            </h2>
+            <p className="text-gray-300 text-lg max-w-3xl mx-auto leading-relaxed">
+              Discover pratical tips for healthy eating that fit your lifestyle. Our expert advice will help you make nutritious choices every day.
+            </p>
+          </div>
+
+          {/* Features Grid 2 */}
+           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
+              {/* Feature 1 */}
+              <div className="text-center">
+                  {/* Gift Icon */}
+                  <div className="mb-6">
+                      <svg className="w-12 h-12 text-white mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7" />
+                    </svg>
+                  </div>
+                  <h3 className="text-5xl font-bold uppercase mb-4 text-white leading-tight">
+                    SAVOR THE
+                    <br />
+                    FLAVORS OF
+                    <br />
+                    SEASONAL
+                    <br />
+                    INGREDIENTS
+                  </h3>
+                  <p className="text-gray-300 leading-relaxed">
+                    Enjoy dishes that celebrate the best of each season.
+                  </p>
+              </div>
+              
+              {/* Feature 2 */}
+               <div className="text-center">
+                  {/* Monitor/Cooking Icon */}
+                  <div className="mb-6">
+                    <svg className="w-12 h-12 text-white mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    </svg>
+                  </div>
+                  <h3 className="text-5xl font-bold uppercase mb-4 text-white leading-tight">
+                    MASTER
+                    <br />
+                    ESSENTIAL
+                    <br />
+                    TECHNIQUES
+                    <br />
+                    WITH EASE
+                  </h3>
+                  <p className="text-gray-300 leading-relaxed">
+                    Learn valuable skills to elevate your culinary creations.
+                  </p>
+               </div>
+
+               {/* Feature 3 */}
+                <div className="text-center">
+                  {/* Community/Rings Icon */}
+                  <div className="mb-6">
+                    <svg className="w-12 h-12 text-white mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="3" strokeWidth={1.5} />
+                    <circle cx="12" cy="12" r="8" strokeWidth={1.5} />
+                    </svg>
+                  </div>
+                  <h3 className="text-5xl font-bold uppercase mb-4 text-white leading-tight">
+                    JOIN OUR
+                    <br />
+                    COMMUNITY OF FOOD ENTHUSIASTS  
+                  </h3>
+                  <p className="text-gray-300 leading-relaxed">
+                    Connect with others who share your passion for food.
+                  </p>
+                </div>
+            </div>
+
+            {/* CTA Buttons */}
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <button className="px-8 py-3 bg-gray-700 text-white rounded-full hover:bg-gray-600 transition-all">
+                  Subscribe
+                </button>
+                <button className="flex items-center text-white hover:text-gray-300 transition-colors">
+                  Learn More
+                  <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </button>
+              </div>
 
 
+
+
+
+
+
+
+        </div>
+      </section>
 
 
 
