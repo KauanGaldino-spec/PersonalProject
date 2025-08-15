@@ -52,7 +52,7 @@ const CulinaryWebsite = () => {
 
         {/* Subtitle */}
         <p className="text-lg md:text-xl text-gray-300 max-w-2xl mb-12 leading-relaxed">
-          Welcome to your culinary adventure! Explore vibrant recipes and tips that celeberate the joy of cooking and healthy eating.
+          Welcome to your culinary adventure! Explore vibrant recipes and tips that celebrate the joy of cooking and healthy eating.
         </p>
 
         {/* CTA Buttons */}
@@ -219,23 +219,150 @@ const CulinaryWebsite = () => {
                   </svg>
                 </button>
               </div>
-
-
-
-
-
-
-
-
-        </div>
+           </div>
       </section>
 
+      {/* Blog Section */}
+      <section className="bg-gray-900 px-6 py-16">
+        <div className="max-w-7xl mx-auto">
+          {/* Section Header */}
+          <div className="mb-12">
+            <p className="text-gray-400 text-sm mb-2">Blog</p>
+            <h2 className="text-4xl md:text-5xl font-bold uppercase text-white mb-4">
+              COOKING TIPS &
+              <br />
+              INSIGHTS
+            </h2>
+            <p className="text-gray-300 text-lg">
+              Explore our latest cooking tips and food trends.
+            </p>
+          </div>
 
+          { /* Blog Cards Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+             {/* Card 1 */}
+              <div className="bg-gray-800 rounded-lg overflow-hidden">
+                {/* Image Placeholder */}
+                  <div className="h-64 bg-gray-200 flex items-center justify-center">
+                      <div className="w-16 h-12 bg-gray-400 rounded flex items-center justify-center">
+                         <svg className="w-8 h-6 text-gray-500" fill="currentColor" viewBox="0 0 24 24">
+                         <path d="M9 21h6l-3-8-3 8zM5.5 13l2.5 8h2l-2.5-8h-2zm13 0h-2l-2.5 8h2l2.5-8z"/>
+                        <circle cx="7.5" cy="6.5" r="1.5"/>
+                        </svg>
+                     </div>
+                  </div>
 
+                  {/* Card Content */}
+                  <div className="p-6">
+                    <p className="text-gray-400 text-sm mb-2">Tips</p>
+                    <h3 className="text-xl font-bold uppercase text-white mb-3">
+                      MASTERING THE
+                      <br />
+                      ART OF COOKING
+                    </h3>
+                    <p className="text-gray-300 text-sm mb-4">
+                      Discover the essential techniques to elevate your culinary skills.
+                    </p>
 
+                    {/* Author Info */}
+                     <div className="flex items-center">
+                        <div className="w-8 h-8 bg-gray-600 rounded-full flex items-center justify-center mr-3">
+                          <span className="text-white text-xs font-bold">JD</span>
+                        </div>
+                        <div className="text-xs text-gray-400">
+                          <span className="text-white">John Doe</span>
+                          <br />
+                          11 Jan 2022 • 5 min read
+                        </div>
+                     </div>
+                  </div>
+              </div>
 
+              {/* Card 2 */}
+                <div className="bg-gray-800 rounded-lg overflow-hidden">
+                  {/* Image Placeholder */}
+                    <div className="h-64 bg-gray-200 flex items-center justify-center">
+                        <div className="w-16 h-12 bg-gray-400 rounded-flex items-center justify-center">
+                            <svg className="w-8 h-6 text-gray-500" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M9 21h6l-3-8-3 8zM5.5 13l2.5 8h2l-2.5-8h-2zm13 0h-2l-2.5   8h2l2.5-8z"/>
+                            <circle cx="7.5" cy="6.5" r="1.5"/>
+                           </svg>
+                        </div>
+                    </div>
 
+                    {/* Card Content */}
+                    <div className="p-6">
+                        <p className="text-gray-400 text-sm mb-2">Advice</p>
+                        <h3 className="text-xl font-bold uppercase text-white mb-3">
+                          HEALTHY EATING
+                          <br />
+                          MADE EASY
+                        </h3>
+                        <p className="text-gray-300 text-sm mb-4">
+                          Simple tips for a balanced and nutritious diet.
+                        </p>
 
+                    {/* Author Info */}
+                      <div className="flex items-center">
+                        <div className="w-8 h-8 bg-gray-600 rounded-full flex items-center justify-center mr-3">
+                          <span className="text-white text-xs font-bold">JS</span>
+                        </div>
+                        <div className="text-xs text-gray-400">
+                          <span className="text-white">Emily Johnson</span>
+                          <br />
+                          20 Jan 2025 • 5 min read
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Card 3 */}
+                  <div className="bg-gray-800 rounded-lg overflow-hidden">
+                    {/* Image Placeholder */}
+                    <div className="h-64 bg-gray-200 flex items-center justify-center">
+                       <div className="w-16 h-12 bg-gray-400 rounded flex items-center justify-center">
+                          <svg className="w-8 h-6 text-gray-500" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M9 21h6l-3-8-3 8zM5.5 13l2.5 8h2l-2.5-8h-2zm13 0h-2l-2.5 8h2l2.5-8z"/>
+                          <circle cx="7.5" cy="6.5" r="1.5"/>
+                          </svg>
+                       </div>
+                    </div>
+
+                    {/* Card Content */}
+                    <div className="p-6"> 
+                        <p className="text-gray-400 text-sm mb-2">Trends</p>
+                        <h3 className="text-xl font-bold uppercase text-white mb-3">
+                          TOP FOOD TRENDS
+                          <br />
+                          OF 2022
+                        </h3>
+                        <p className="text-gray-300 text-sm mb-4">
+                           Stay ahead with the latest culinary trends and innovations.
+                        </p>
+
+                        {/* Author Info */}
+                        <div className="flex items-center">
+                            <div className="w-8 h-8 bg-gray-600 rounded-full flex items-center justify-center mr-3">
+                               <span className="text-white text-xs font-bold">EJ</span>
+                            </div>
+                            <div className="text-xs text-gray-400">
+                              <span className="text-white">Emily Johnson</span>
+                              <br />
+                              20 Jan 2022 • 6 min read
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            
+                {/* View All Button */}
+                <div className="flex justify-end">
+                  <button className="px-6 py-2 bg-gray-700 text-white">
+                      View All
+                  </button>
+                </div>
+            </div>
+         </div>
+      </section>
     </div>
   )
 }
