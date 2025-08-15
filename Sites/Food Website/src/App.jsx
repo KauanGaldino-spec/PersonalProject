@@ -40,7 +40,7 @@ const CulinaryWebsite = () => {
       {/* Main Content */}
       <main className="flex flex-col items-center justify-center text-center px-6 py-20 min-h-[calc(100vh-80px)]">
           {/* Hero Title */}
-          <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold uppercase leading-tight mb-8 max-w-5xl">
+          <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold uppercase leading-tight mb-8 max-w-5xl ml-9">
             DISCOVER THE
             <br />
             WORLD OF
@@ -51,7 +51,7 @@ const CulinaryWebsite = () => {
           </h1>
 
         {/* Subtitle */}
-        <p className="text-lg md:text-xl text-gray-300 max-w-2xl mb-12 leading-relaxed">
+        <p className="text-lg md:text-xl text-gray-300 max-w-2xl mb-12 leading-relaxed ml-9">
           Welcome to your culinary adventure! Explore vibrant recipes and tips that celebrate the joy of cooking and healthy eating.
         </p>
 
@@ -92,10 +92,10 @@ const CulinaryWebsite = () => {
             {/* Cuisine Categories */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div>
-                <h3 className="text-xl font-bold uppercase mb-3 ml-8">
+                <h3 className="text-xl font-bold uppercase mb-3 ml-9">
                   ITALIAN DELIGHTS 
                 </h3>
-                <p className="text-gray-300 leading-relaxed">
+                <p className="text-gray-300 leading-relaxed ml-9">
                   Savor the rich flavors of Italy with our authentic pasta and pizza recipes.
                 </p>
               </div>
@@ -227,13 +227,13 @@ const CulinaryWebsite = () => {
         <div className="max-w-7xl mx-auto">
           {/* Section Header */}
           <div className="mb-12">
-            <p className="text-gray-400 text-sm mb-2">Blog</p>
-            <h2 className="text-4xl md:text-5xl font-bold uppercase text-white mb-4">
+            <p className="text-gray-400 text-sm mb-2 ml-9">Blog</p>
+            <h2 className="text-4xl md:text-5xl font-bold uppercase text-white mb-4 ml-9">
               COOKING TIPS &
               <br />
               INSIGHTS
             </h2>
-            <p className="text-gray-300 text-lg">
+            <p className="text-gray-300 text-lg ml-9">
               Explore our latest cooking tips and food trends.
             </p>
           </div>
@@ -241,7 +241,7 @@ const CulinaryWebsite = () => {
           { /* Blog Cards Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
              {/* Card 1 */}
-              <div className="bg-gray-800 rounded-lg overflow-hidden">
+              <div className="bg-gray-800 rounded-lg overflow-hidden ml-9">
                 {/* Image Placeholder */}
                   <div className="h-64 bg-gray-200 flex items-center justify-center">
                       <div className="w-16 h-12 bg-gray-400 rounded flex items-center justify-center">
@@ -279,7 +279,7 @@ const CulinaryWebsite = () => {
               </div>
 
               {/* Card 2 */}
-                <div className="bg-gray-800 rounded-lg overflow-hidden">
+                <div className="bg-gray-800 rounded-lg overflow-hidden ml-9">
                   {/* Image Placeholder */}
                     <div className="h-64 bg-gray-200 flex items-center justify-center">
                         <div className="w-16 h-12 bg-gray-400 rounded-flex items-center justify-center">
@@ -317,7 +317,7 @@ const CulinaryWebsite = () => {
                   </div>
 
                   {/* Card 3 */}
-                  <div className="bg-gray-800 rounded-lg overflow-hidden">
+                  <div className="bg-gray-800 rounded-lg overflow-hidden ml-9">
                     {/* Image Placeholder */}
                     <div className="h-64 bg-gray-200 flex items-center justify-center">
                        <div className="w-16 h-12 bg-gray-400 rounded flex items-center justify-center">
@@ -355,14 +355,79 @@ const CulinaryWebsite = () => {
                 </div>
             
                 {/* View All Button */}
+                </div>
                 <div className="flex justify-end">
-                  <button className="px-6 py-2 bg-gray-700 text-white">
+                  <button className="px-5 py-2 bg-gray-700 text-white rounded-full mt-10">
                       View All
                   </button>
-                </div>
             </div>
          </div>
       </section>
+
+      {/* Seasonal Dishes Section */}
+       <section className="bg-gray-900 px-6 py-16">
+          <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* Left Content */}
+            <div className="text-white">
+              {/* Main Title */}
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold uppercase leading-tight mb-6">
+                DISCOVER THE BEST
+                <br />
+                TREDING DISHES TO
+                <br />
+                SAVOR TODAY!
+              </h2>
+
+              {/* Description */}
+               <p className="text-gray-300 text-lg mb-12 leading-relaxed max-w-lg">
+                  Explore our curated selection of seasonal favorites that celebrate fresh ingredients. From vibrant salads to hearty stews, there's something for every palate!
+               </p>
+
+             {/* Seasonal Categories */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                  <h3 className="text-4xl md:text-5xl font-bold uppercase mb-4 text-white leading-tight">
+                      SUM
+                      <br />
+                      MER
+                  </h3>
+                  <p className="text-gray-300 leading-relaxed">
+                    Refreshing watermelon salad with mind and feta.
+                  </p>
+                </div>
+                 <div>
+                    <h3 className="text-4xl md:text-5xl font-bold uppercase mb-4 text-white leading-tight">
+                      FALL
+                    </h3>
+                    <p className="text-gray-300 leading-relaxed">
+                      Savory pumpkin soup with a hint spice.
+                    </p>
+                 </div>
+              </div>
+            </div>
+
+            {/* Right Image */}
+            <div className="flex justify-center lg:justify-end">
+                <div className="w-full max-w-lg h-96 bg-gray-200 rounded-2xl flex items-center justify-center">
+                  {/* Food Image Placeholder */}
+                  <div className="w-20 h-16 bg-gray-400 rounded-lg flex items-center justify-center">
+                    <svg className="w-12 h-10 text-gray-500" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                    </svg>
+                  </div>
+                </div>
+             </div>
+          </div>
+       </section>
+
+
+
+
+
+
+
+
+
     </div>
   )
 }
