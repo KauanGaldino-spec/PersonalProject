@@ -468,6 +468,127 @@ const CulinaryWebsite = () => {
            </div>
         </section>
 
+              {/* Join Community Section */}
+      <section className="bg-gray-700 px-6 py-20">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          {/* Left Content */}
+          <div className="text-white">
+            {/* Main Title */}
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold uppercase leading-tight mb-6">
+              JOIN OUR CULINARY
+              <br />
+              COMMUNITY!
+            </h2>
+
+            {/* Description */}
+            <p className="text-gray-300 text-lg mb-12 leading-relaxed max-w-lg">
+              Subscribe now for exclusive recipes, cooking tips, and the latest updates delivered to your inbox!
+            </p>
+
+            {/* CTA Buttons */}
+            <div className="flex items-center space-x-4">
+              <button className="px-8 py-3 bg-black text-white rounded-full hover:bg-gray-800 transition-all">
+                Subscribe
+              </button>
+              <button className="px-8 py-3 bg-gray-600 text-white rounded-full hover:bg-gray-500 transition-all">
+                Learn More
+              </button>
+            </div>
+          </div>
+
+          {/* Right Image */}
+          <div className="flex justify-center lg:justify-end">
+            <div className="w-full max-w-lg h-80 bg-gray-600 rounded-2xl flex items-center justify-center relative">
+              {/* Phone/Device Placeholder */}
+              <div className="w-48 h-64 bg-gray-800 rounded-3xl flex items-center justify-center relative overflow-hidden">
+                {/* Screen area */}
+                <div className="w-40 h-56 bg-gray-700 rounded-2xl flex items-center justify-center">
+                  {/* Notification icon */}
+                  <div className="w-16 h-12 bg-gray-500 rounded-lg flex items-center justify-center">
+                    <svg className="w-8 h-6 text-gray-400" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.89 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Form Section */}
+      <section className="bg-gray-800 px-6 py-20">
+        <div className="max-w-2xl mx-auto text-center">
+          {/* Section Header */}
+          <p className="text-gray-400 text-lg mb-4">Subscribe</p>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold uppercase text-white mb-6 leading-tight">
+            GET IN TOUCH
+          </h2>
+          <p className="text-gray-300 text-lg mb-12">
+            Join our community for delicious updates!
+          </p>
+
+          {/* Contact Form */}
+          <form className="space-y-6">
+            {/* Name Field */}
+            <div className="text-left">
+              <label htmlFor="name" className="block text-white text-sm mb-2">
+                Name
+              </label>
+              <input
+                type="text"
+                id="name"
+                className="w-full px-4 py-3 bg-gray-700 text-white rounded-lg border border-gray-600 focus:border-gray-500 focus:outline-none transition-colors"
+              />
+            </div>
+
+            {/* Email Field */}
+            <div className="text-left">
+              <label htmlFor="email" className="block text-white text-sm mb-2">
+                Email
+              </label>
+              <input
+                type="email"
+                id="email"
+                className="w-full px-4 py-3 bg-gray-700 text-white rounded-lg border border-gray-600 focus:border-gray-500 focus:outline-none transition-colors"
+              />
+            </div>
+
+            {/* Message Field */}
+            <div className="text-left">
+              <label htmlFor="message" className="block text-white text-sm mb-2">
+                Message
+              </label>
+              <textarea
+                id="message"
+                rows={5}
+                placeholder="Share your thoughts..."
+                className="w-full px-4 py-3 bg-gray-700 text-white rounded-lg border border-gray-600 focus:border-gray-500 focus:outline-none transition-colors placeholder-gray-400"
+              ></textarea>
+            </div>
+
+            {/* Terms Checkbox */}
+            <div className="flex items-center text-left">
+              <input
+                type="checkbox"
+                id="terms"
+                className="w-4 h-4 bg-gray-700 border border-gray-600 rounded focus:outline-none mr-3"
+              />
+              <label htmlFor="terms" className="text-gray-300 text-sm">
+                I agree to the Terms
+              </label>
+            </div>
+
+            {/* Submit Button */}
+            <button
+              type="submit"
+              className="px-8 py-3 bg-white text-gray-800 rounded-full font-medium hover:bg-gray-200 transition-all"
+            >
+              Submit
+            </button>
+          </form>
+        </div>
+      </section>
 
 
 
