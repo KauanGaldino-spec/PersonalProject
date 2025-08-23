@@ -890,16 +890,44 @@ const CulinaryWebsite = () => {
                           </svg>
                         ))}
                       </div>
-                 </div>       
 
+                     {/* Quote */}
+                        <h3 className="text-xl font-bold uppercase mb-6 leading-tight">
+                        "I LOVE THE VARIETY OF
+                        <br />
+                         CUISINES OFFERED!"
+                       </h3>
+                      
+                     {/* Profile */}
+                           <div className="flex items-center mb-6">
+                           <div className="w-12 h-12 bg-gray-600 rounded-full flex items-center justify-center mr-4">
+                                      <svg className="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 24 24">
+                                      <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                                     </svg>
+                               </div>
+                               <div>
+                                 <p className="text-white font-medium">
+                                   Sarah Lee
+                                 </p>
+                                 <p className="text-gray-400 text-sm">
+                                   Nutritionist, Author
+                                 </p>
+                               </div>
+                         </div>
 
-          </div>
-
-
-         </div>
+                     {/* Platform Logo */}
+                       <div className="flex items-center">
+                         <svg className="w-6 h-6 text-white mr-2" fill="currentColor" viewBox="0 0 24 24">
+                           <path d="M12 2L2 7v10c0 5.55 3.84 9.74 9 11 5.16-1.26 9-5.45 9-11V7l-10-5z"/>
+                         </svg>
+                         <span className="text-white font-medium">
+                           Webflow
+                         </span>
+                       </div>
+                  </div>       
+              </div>
+           </div>
        </section>
-
-
 
     </div>
   )
