@@ -468,54 +468,6 @@ const CulinaryWebsite = () => {
            </div>
         </section>
 
-              {/* Join Community Section */}
-      <section className="bg-gray-700 px-6 py-20">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          {/* Left Content */}
-          <div className="text-white">
-            {/* Main Title */}
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold uppercase leading-tight mb-6">
-              JOIN OUR CULINARY
-              <br />
-              COMMUNITY!
-            </h2>
-
-            {/* Description */}
-            <p className="text-gray-300 text-lg mb-12 leading-relaxed max-w-lg">
-              Subscribe now for exclusive recipes, cooking tips, and the latest updates delivered to your inbox!
-            </p>
-
-            {/* CTA Buttons */}
-            <div className="flex items-center space-x-4">
-              <button className="px-8 py-3 bg-black text-white rounded-full hover:bg-gray-800 transition-all">
-                Subscribe
-              </button>
-              <button className="px-8 py-3 bg-gray-600 text-white rounded-full hover:bg-gray-500 transition-all">
-                Learn More
-              </button>
-            </div>
-          </div>
-
-          {/* Right Image */}
-          <div className="flex justify-center lg:justify-end">
-            <div className="w-full max-w-lg h-80 bg-gray-600 rounded-2xl flex items-center justify-center relative">
-              {/* Phone/Device Placeholder */}
-              <div className="w-48 h-64 bg-gray-800 rounded-3xl flex items-center justify-center relative overflow-hidden">
-                {/* Screen area */}
-                <div className="w-40 h-56 bg-gray-700 rounded-2xl flex items-center justify-center">
-                  {/* Notification icon */}
-                  <div className="w-16 h-12 bg-gray-500 rounded-lg flex items-center justify-center">
-                    <svg className="w-8 h-6 text-gray-400" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.89 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/>
-                    </svg>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Contact Form Section */}
       <section className="bg-gray-800 px-6 py-20">
         <div className="max-w-2xl mx-auto text-center">
@@ -898,7 +850,7 @@ const CulinaryWebsite = () => {
                          CUISINES OFFERED!"
                        </h3>
                       
-                     {/* Profile */}
+                         {/* Profile */}
                            <div className="flex items-center mb-6">
                            <div className="w-12 h-12 bg-gray-600 rounded-full flex items-center justify-center mr-4">
                                       <svg className="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 24 24">
@@ -928,6 +880,25 @@ const CulinaryWebsite = () => {
               </div>
            </div>
        </section>
+
+                       
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     </div>
   )
