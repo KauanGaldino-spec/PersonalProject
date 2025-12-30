@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anime Vault</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="site-header">
+        <h1>Anime Vault</h1>
+        <div class="controls">
+            <input type="search" type="search" placeholder="Search anime..." aria-label="Search anime">
+            <select id="genre-filter" aria-label="filter by genre">
+                <option value="">All genres</option>
+            </select>
+            <button id="show-favorites" title="Show favorites" aria-pressed="false">?</button>
+        </div>
+    </header>
+
+    <main>
+        <div id="grid" class="grid" aria-live="polite"></div>
+    </main>
+
+    <!-- Modal -->
+     <div id="modal" class="modal" role="dialog" aria-modal="true" aria-hidden="true">
+        <div class="modal-content">
+            <button class="modal-close" id="modal-close" arial-label="Close">
+                ?
+            </button>
+            <div id="modal-body"></div>
+        </div>
+     </div>
+    
+     <script src="script.js"></script>
+</body>
+</html>
