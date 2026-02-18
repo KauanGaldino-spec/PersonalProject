@@ -317,6 +317,98 @@ export default function GamingHeroSection() {
           </div>
         </div>
       </div>
+
+      {/* Footer */}
+      <div className="bg-neutral-900 text-white px-12 py-16">
+        <div className="max-w-6xl mx-auto">
+          {/* Top Footer Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+            {/* Left: Logo + Newsletter */}
+            <div className="md:col-span-1">
+              <div className="text-2xl font-bold italic mb-6 text-white" style={{ fontFamily: 'cursive' }}>
+                Logo
+              </div>
+              <p className="text-neutral-300 text-sm mb-6 leading-relaxed">
+                Receive updates on the world of Pharloom.
+              </p>
+              <div className="mb-2">
+                <div className="flex items-end gap-3">
+                  <input
+                    type="email"
+                    placeholder="Your email"
+                    className="bg-transparent border-b border-neutral-500 text-white placeholder-neutral-500 focus:outline-none focus:border-white transition-colors py-2 flex-1 text-sm"
+                  />
+                  <button className="bg-white text-neutral-900 px-5 py-2 rounded text-sm font-semibold hover:opacity-90 transition-opacity whitespace-nowrap">
+                    Subscribe
+                  </button>
+                </div>
+              </div>
+              <p className="text-neutral-500 text-xs mt-3">
+                By subscribing you agree to our Privacy Policy and consent to receive updates.
+              </p>
+            </div>
+
+            {/* Spacer */}
+            <div className="hidden md:block" />
+
+            {/* Explore */}
+            <div>
+              <h4 className="font-semibold text-white text-base mb-6">Explore</h4>
+              <ul className="space-y-4">
+                {['About Silksong', 'World of Pharloom', 'Gallery', 'Lore', 'Connect'].map((item) => (
+                  <li key={item}>
+                    <a href="#" className="text-neutral-300 text-sm hover:text-white transition-colors">{item}</a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Contact */}
+            <div>
+              <h4 className="font-semibold text-white text-base mb-6">Contact</h4>
+              <ul className="space-y-4 mb-10">
+                {['Community', 'Credits', 'Disclaimer', 'Follow', 'Twitter'].map((item) => (
+                  <li key={item}>
+                    <a href="#" className="text-neutral-300 text-sm hover:text-white transition-colors">{item}</a>
+                  </li>
+                ))}
+              </ul>
+
+              <h4 className="font-semibold text-white text-base mb-6">Discord</h4>
+              <ul className="space-y-4">
+                {[
+                  { label: 'Tumblr', icon: '⬡' },
+                  { label: 'Reddit', icon: '◎' },
+                  { label: 'YouTube', icon: '✕' },
+                  { label: 'LinkedIn', icon: 'in' },
+                  { label: 'Youtube', icon: '▶' },
+                ].map((item) => (
+                  <li key={item.label}>
+                    <a href="#" className="flex items-center gap-2 text-neutral-300 text-sm hover:text-white transition-colors">
+                      <span className="w-5 h-5 bg-white rounded-full flex items-center justify-center text-neutral-900 text-xs font-bold flex-shrink-0">
+                        {item.icon === '▶' ? '▶' : item.icon === 'in' ? 'in' : item.icon === '✕' ? '✕' : item.icon === '◎' ? '◎' : '●'}
+                      </span>
+                      {item.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          {/* Divider */}
+          <div className="border-t border-neutral-700 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+            <p className="text-neutral-400 text-sm">
+              © 2025 ValorCraft Academy. Unofficial fan project.
+            </p>
+            <div className="flex items-center gap-6">
+              <a href="#" className="text-neutral-300 text-sm underline underline-offset-2 hover:text-white transition-colors">Privacy Policy</a>
+              <a href="#" className="text-neutral-300 text-sm underline underline-offset-2 hover:text-white transition-colors">Terms of Service</a>
+              <a href="#" className="text-neutral-300 text-sm underline underline-offset-2 hover:text-white transition-colors">Cookies Settings</a>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
