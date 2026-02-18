@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ChevronDown, Crown, Square, Sparkles, ChevronRight, Star, User, Image } from 'lucide-react';
+import { ChevronDown, Crown, Square, Sparkles, ChevronRight, Star, User, Image, Mail, Phone, MapPin } from 'lucide-react';
 
 export default function GamingHeroSection() {
   const [email, setEmail] = useState('');
@@ -253,7 +253,70 @@ export default function GamingHeroSection() {
           </div>
         </div>
       </div>
+
+      {/* Share Your Voice Section */}
+      <div className="bg-neutral-900 text-white px-12 py-20">
+        {/* Top: Two Column Layout */}
+        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 mb-16">
+          {/* Left Column */}
+          <div>
+            <p className="text-sm font-bold uppercase tracking-wider text-white mb-3">
+              Reach out
+            </p>
+            <h2 className="text-5xl font-black uppercase leading-tight mb-6">
+              SHARE YOUR VOICE
+            </h2>
+            <p className="text-neutral-300 text-base leading-relaxed max-w-md">
+              This is an unofficial fan project celebrating Hollow Knight: Silksong. Send
+              your tributes, questions, or thoughts to the community below. For official
+              Team Cherry news, visit their channels.
+            </p>
+          </div>
+
+          {/* Right Column - Contact Links */}
+          <div className="flex flex-col justify-center gap-8">
+            {/* Discord */}
+            <div className="flex items-start gap-4">
+              <Mail className="w-5 h-5 mt-1 text-white flex-shrink-0" strokeWidth={1.5} />
+              <div>
+                <p className="font-bold uppercase text-white text-base mb-1">DISCORD</p>
+                <a href="#" className="text-neutral-300 underline underline-offset-2 hover:text-white transition-colors text-sm">
+                  ValorCraft Academy server
+                </a>
+              </div>
+            </div>
+
+            {/* Twitter */}
+            <div className="flex items-start gap-4">
+              <Phone className="w-5 h-5 mt-1 text-white flex-shrink-0" strokeWidth={1.5} />
+              <div>
+                <p className="font-bold uppercase text-white text-base mb-1">TWITTER</p>
+                <a href="#" className="text-neutral-300 underline underline-offset-2 hover:text-white transition-colors text-sm">
+                  @TeamCherry official
+                </a>
+              </div>
+            </div>
+
+            {/* Web */}
+            <div className="flex items-start gap-4">
+              <MapPin className="w-5 h-5 mt-1 text-white flex-shrink-0" strokeWidth={1.5} />
+              <div>
+                <p className="font-bold uppercase text-white text-base mb-1">WEB</p>
+                <p className="text-neutral-300 text-sm">Team Cherry official website</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom: Large Image Placeholder */}
+        <div className="max-w-6xl mx-auto">
+          <div className="bg-neutral-200 rounded-2xl aspect-video flex items-center justify-center">
+            <div className="bg-neutral-300 rounded-xl p-10">
+              <Image className="w-24 h-24 text-neutral-400" strokeWidth={1} />
+            </div>
+          </div>
+        </div>
       </div>
-      </div>
-      );
+    </div>
+  );
 }
