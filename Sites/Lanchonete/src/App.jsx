@@ -3,6 +3,7 @@ import Navbar from "./components/Navbar";
 import Sidebar from "./components/Sidebar";
 import Hero, { DemoMenu } from "./components/Hero";
 import CategorySection from "./components/Categorysection";
+import PopularSection from "./components/PopularSection";
 
 export default function App() {
   return (
@@ -14,6 +15,7 @@ export default function App() {
           <Hero />
         </div>
         <CategorySection />
+        <PopularSection />
         <DemoMenu />
       </div>
     </CartProvider>

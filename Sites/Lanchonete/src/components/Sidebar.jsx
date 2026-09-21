@@ -8,6 +8,7 @@ import {
   Package,
   Star,
   HelpCircle,
+  ArrowRight,
 } from "lucide-react";
 
 const NAV_ITEMS = [
@@ -21,7 +22,18 @@ const NAV_ITEMS = [
   { id: "support", label: "Support", icon: HelpCircle },
 ];
 
-export default function Sidebar({ active, onNavigate }) {
+export default function Sidebar({
+  active,
+  onNavigate,
+  promo = {
+    discount: "50% OFF",
+    message: "on your first order",
+    ctaLabel: "Order Now",
+    image:
+      "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=300&auto=format&fit=crop",
+  },
+  onOrderNow = () => {},
+}) {
   // Works standalone (internal state) or controlled from a parent/router
   // by passing `active` + `onNavigate`.
   const [internalActive, setInternalActive] = useState("home");
@@ -29,7 +41,7 @@ export default function Sidebar({ active, onNavigate }) {
   const setActive = onNavigate ?? setInternalActive;
 
   return (
-    <aside className="w-40 shrink-0 border-r border-gray-100 py-6 px-3">
+    <aside className="w-40 shrink-0 border-r border-gray-100 py-6 px-3 flex flex-col h-full">
       <nav className="flex flex-col gap-1">
         {NAV_ITEMS.map(({ id, label, icon: Icon }) => {
           const isActive = current === id;
@@ -50,6 +62,33 @@ export default function Sidebar({ active, onNavigate }) {
           );
         })}
       </nav>
+
+      <div
+        className="relative w-full rounded-2xl overflow-hidden p-4 pb-20 text-white mt-auto"
+        style={{
+          background: "linear-gradient(160deg, #F5883C 0%, #E8542B 100%)",
+        }}
+      >
+        <p className="text-sm font-bold leading-tight">
+          Get {promo.discount}
+          <br />
+          {promo.message}
+        </p>
+
+        <button
+          onClick={onOrderNow}
+          className="mt-3 inline-flex items-center gap-1 text-xs font-semibold bg-white/95 text-orange-600 px-3 py-1.5 rounded-full hover:bg-white transition-colors"
+        >
+          {promo.ctaLabel}
+          <ArrowRight size={12} />
+        </button>
+
+        <img
+          src={promo.image}
+          alt="Promo dish"
+          className="absolute bottom-0 left-0 w-full h-20 object-cover object-top"
+        />
+      </div>
     </aside>
   );
 }

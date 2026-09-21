@@ -3,38 +3,6 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useCart } from "../context/CartContext";
 
 /* ------------------------------------------------------------------ */
-/* Inline burger illustration — pure SVG, no network request, so it     */
-/* always renders regardless of sandbox/CORS restrictions. Swap this    */
-/* out for your client's real product photo when you have it.          */
-/* ------------------------------------------------------------------ */
-function BurgerIllustration({ className }) {
-  return (
-    <svg viewBox="0 0 260 260" className={className} xmlns="http://www.w3.org/2000/svg">
-      <path d="M40 118c0-33 40-55 90-55s90 22 90 55H40z" fill="#E8A33D" />
-      <circle cx="95" cy="82" r="4" fill="#FCE7C8" />
-      <circle cx="120" cy="74" r="4" fill="#FCE7C8" />
-      <circle cx="145" cy="80" r="4" fill="#FCE7C8" />
-      <circle cx="168" cy="88" r="4" fill="#FCE7C8" />
-      <circle cx="108" cy="94" r="4" fill="#FCE7C8" />
-      <circle cx="155" cy="98" r="4" fill="#FCE7C8" />
-
-      <path
-        d="M32 122c10-10 20 4 30-4s16 10 28 2 18 8 30 0 20 8 30 0 18 8 28 0 20-10 30 0H32z"
-        fill="#8FC93A"
-      />
-
-      <path d="M42 138l176 0-14 20H56z" fill="#F5C243" />
-
-      <rect x="38" y="152" width="184" height="26" rx="13" fill="#7A4A2B" />
-
-      <rect x="46" y="182" width="168" height="14" rx="7" fill="#E14E3C" />
-
-      <path d="M44 198h172c0 18-14 30-86 30s-86-12-86-30z" fill="#D98A32" />
-    </svg>
-  );
-}
-
-/* ------------------------------------------------------------------ */
 /* Hero                                                                 */
 /* ------------------------------------------------------------------ */
 export default function Hero() {
@@ -45,17 +13,17 @@ export default function Hero() {
   const nextSlide = () => setSlide((s) => (s + 1) % slideCount);
 
   return (
-    <section className="relative flex-1 overflow-hidden bg-gradient-to-br from-orange-50 via-orange-50 to-amber-100 rounded-2xl px-10 py-12 min-h-[340px]">
+    <section className="relative flex-1 overflow-hidden bg-gradient-to-br from-orange-50 via-orange-50 to-amber-100 rounded-2xl px-10 py-10 min-h-[320px]">
       <div className="relative z-10 max-w-md">
-        <p className="text-xs font-semibold tracking-wide text-orange-500 mb-3">
+        <p className="text-sm font-bold tracking-wide text-orange-500 mb-3">
           GOOD FOOD, GOOD MOOD
         </p>
-        <h1 className="text-4xl font-bold text-gray-900 leading-tight mb-4">
+        <h1 className="text-5xl font-extrabold text-gray-900 leading-tight mb-4">
           Delicious Food
           <br />
           <span className="text-orange-500">Delivered Fast.</span>
         </h1>
-        <p className="text-sm text-gray-500 mb-6 max-w-xs">
+        <p className="text-base text-gray-600 mb-6 max-w-sm">
           Discover the best restaurants, cuisines and exclusive offers near
           you.
         </p>
@@ -63,7 +31,7 @@ export default function Hero() {
         <div className="flex items-center gap-3 mb-6">
           <button
             type="button"
-            className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-orange-500 text-white text-sm font-medium hover:bg-orange-600 transition-colors"
+            className="flex items-center gap-2 px-6 py-3 rounded-full bg-orange-500 text-white text-base font-semibold hover:bg-orange-600 transition-colors"
           >
             Order Now
             <span className="w-5 h-5 rounded-full bg-white/20 flex items-center justify-center text-xs">
@@ -72,7 +40,7 @@ export default function Hero() {
           </button>
           <button
             type="button"
-            className="flex items-center gap-2 px-5 py-2.5 rounded-full border border-gray-900 text-gray-900 text-sm font-medium hover:bg-gray-900 hover:text-white transition-colors"
+            className="flex items-center gap-2 px-6 py-3 rounded-full border-2 border-gray-900 text-gray-900 text-base font-semibold hover:bg-gray-900 hover:text-white transition-colors"
           >
             Explore Menu
             <span className="w-5 h-5 rounded-full bg-current flex items-center justify-center">
@@ -83,26 +51,51 @@ export default function Hero() {
 
         <div className="flex items-center gap-3">
           <div className="flex -space-x-2">
-            {["A", "B", "C"].map((letter) => (
-              <span
-                key={letter}
-                className="w-7 h-7 rounded-full bg-orange-200 border-2 border-white flex items-center justify-center text-[10px] font-medium text-orange-800"
-              >
-                {letter}
-              </span>
+            {[
+              "https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=100&auto=format&fit=crop",
+              "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=100&auto=format&fit=crop",
+              "https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?q=80&w=100&auto=format&fit=crop",
+            ].map((src, i) => (
+              <img
+                key={i}
+                src={src}
+                alt=""
+                className="w-9 h-9 rounded-full border-2 border-white object-cover"
+              />
             ))}
           </div>
-          <span className="text-xs text-gray-500">
-            <span className="font-semibold text-gray-800">50K+</span> Happy
+          <span className="text-sm text-gray-600">
+            <span className="font-bold text-gray-900">50K+</span> Happy
             Customers
           </span>
         </div>
       </div>
 
-      <div className="hidden md:block absolute right-8 top-1/2 -translate-y-1/2 w-72 h-72">
-        <BurgerIllustration className="w-full h-full drop-shadow-2xl" />
+      <div className="hidden md:block absolute right-0 top-0 bottom-0 w-[45%] overflow-hidden">
+        <img
+          src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=700&auto=format&fit=crop"
+          alt="Spicy Zinger Burger with fries and a drink"
+          className="w-full h-full object-cover"
+        />
+        {/* Fades the photo's edges into the hero's background color.
+            Uses a plain gradient overlay (not CSS mask-image) so it
+            renders consistently across browsers/renderers. */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background:
+              "radial-gradient(ellipse 70% 80% at 55% 50%, transparent 45%, #FDECD5 100%)",
+          }}
+        />
+        <div
+          className="absolute inset-y-0 left-0 w-24 pointer-events-none"
+          style={{
+            background:
+              "linear-gradient(to right, #FDECD5 0%, transparent 100%)",
+          }}
+        />
 
-        <div className="absolute bottom-4 -left-16 bg-white rounded-xl shadow-lg px-4 py-3 w-44">
+        <div className="absolute bottom-10 left-0 bg-white rounded-xl shadow-lg px-4 py-3 w-44">
           <p className="text-sm font-semibold text-gray-900">
             Spicy Zinger Burger
           </p>

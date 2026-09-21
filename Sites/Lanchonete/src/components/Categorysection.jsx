@@ -44,8 +44,8 @@ export default function CategorySection({
   onSelect = () => {},
 }) {
   return (
-    <section className="w-full py-6">
-      <div className="flex items-center justify-between mb-4 px-1">
+    <section className="w-full py-6 pl-68 pr-1">
+      <div className="flex items-center justify-between mb-4 px-2">
         <h2 className="text-xl font-semibold text-gray-900">
           Explore by Cuisine
         </h2>
@@ -58,12 +58,12 @@ export default function CategorySection({
         </button>
       </div>
 
-      <div className="flex gap-4 overflow-x-auto pb-2 px-1 scrollbar-hide snap-x snap-mandatory">
+      <div className="flex gap-4 overflow-x-auto pb-2 pl-2 pr-1 scrollbar-hide snap-x snap-mandatory">
         {cuisines.map((cuisine) => (
           <button
             key={cuisine.name}
             onClick={() => onSelect(cuisine)}
-            className="flex-shrink-0 w-40 rounded-2xl p-4 text-left snap-start transition-transform hover:-translate-y-0.5"
+            className="flex-shrink-0 w-48 rounded-2xl p-4 text-left snap-start transition-transform hover:-translate-y-0.5"
             style={{ backgroundColor: cuisine.bg }}
           >
             <div className="w-full aspect-square rounded-xl overflow-hidden mb-3 bg-white/50">
