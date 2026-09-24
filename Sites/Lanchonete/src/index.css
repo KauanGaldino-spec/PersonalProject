@@ -16,6 +16,9 @@
 	--color-success: #28754b;
 	--color-success-tint: #e3f2e8;
 	--color-danger: #a6371f;
+	--color-brand: #ff6b23;
+	--color-brand-dark: #e8542b;
+	--color-brand-soft: #fff1ea;
 	--font-display: Georgia, "Times New Roman", serif;
 	--radius-s: 8px;
 	--radius-m: 12px;
@@ -30,7 +33,7 @@
 		overflow-x: hidden;
 		background: var(--color-cream);
 		color: var(--color-ink);
-		font-family: Georgia, "Times New Roman", serif;
+		font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 	}
 }
 

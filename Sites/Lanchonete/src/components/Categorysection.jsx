@@ -1,50 +1,15 @@
 import { ArrowRight } from "lucide-react";
-
-const CUISINES = [
-  {
-    name: "Italian",
-    count: "120+ Dishes",
-    bg: "#FBEDE4",
-    image:
-      "https://images.unsplash.com/photo-1595854341625-f33ee10dbf94?q=80&w=400&auto=format&fit=crop",
-  },
-  {
-    name: "Chinese",
-    count: "150+ Dishes",
-    bg: "#E9F2E9",
-    image:
-      "https://images.unsplash.com/photo-1585032226651-759b368d7246?q=80&w=400&auto=format&fit=crop",
-  },
-  {
-    name: "Indian",
-    count: "180+ Dishes",
-    bg: "#FCEFE0",
-    image:
-      "https://images.unsplash.com/photo-1631452180519-c014fe946bc7?q=80&w=400&auto=format&fit=crop",
-  },
-  {
-    name: "Mexican",
-    count: "90+ Dishes",
-    bg: "#FBEAE9",
-    image:
-      "https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?q=80&w=400&auto=format&fit=crop",
-  },
-  {
-    name: "Japanese",
-    count: "110+ Dishes",
-    bg: "#F0EDF9",
-    image:
-      "https://images.unsplash.com/photo-1553621042-f6e147245754?q=80&w=400&auto=format&fit=crop",
-  },
-];
+import { useCuisines } from "../hooks/useMenuData";
 
 export default function CategorySection({
-  cuisines = CUISINES,
+  cuisines: controlledCuisines,
   onViewAll = () => {},
   onSelect = () => {},
 }) {
+  const { data, loading, error } = useCuisines();
+  const cuisines = controlledCuisines || data;
   return (
-    <section className="w-full py-6 pl-68 pr-1">
+    <section className="w-full py-6 px-4">
       <div className="flex items-center justify-between mb-4 px-2">
         <h2 className="text-xl font-semibold text-gray-900">
           Explore by Cuisine
@@ -59,12 +24,27 @@ export default function CategorySection({
       </div>
 
       <div className="flex gap-4 overflow-x-auto pb-2 pl-2 pr-1 scrollbar-hide snap-x snap-mandatory">
+        {loading && (
+          <div className="flex gap-4">
+            {[1, 2, 3, 4, 5].map((item) => (
+              <div
+                key={item}
+                className="h-48 w-48 animate-pulse rounded-2xl bg-gray-100"
+              />
+            ))}
+          </div>
+        )}
+        {!loading && error && (
+          <p className="text-sm text-gray-500">
+            Live cuisines are unavailable; showing the demo menu.
+          </p>
+        )}
         {cuisines.map((cuisine) => (
           <button
             key={cuisine.name}
             onClick={() => onSelect(cuisine)}
             className="flex-shrink-0 w-48 rounded-2xl p-4 text-left snap-start transition-transform hover:-translate-y-0.5"
-            style={{ backgroundColor: cuisine.bg }}
+            style={{ backgroundColor: cuisine.backgroundColor || cuisine.bg }}
           >
             <div className="w-full aspect-square rounded-xl overflow-hidden mb-3 bg-white/50">
               <img

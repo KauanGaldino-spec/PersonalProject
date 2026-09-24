@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { useCart } from "../context/CartContext";
 
 /* ------------------------------------------------------------------ */
 /* Hero                                                                 */
@@ -143,35 +142,3 @@ export default function Hero() {
   );
 }
 
-/* ------------------------------------------------------------------ */
-/* Demo menu — a few dishes with "Add to cart" buttons feeding the      */
-/* shared CartContext. Delete this once wired into your real menu.     */
-/* ------------------------------------------------------------------ */
-const DEMO_DISHES = [
-  { id: "pizza-margherita", name: "Margherita Pizza", price: 12.5 },
-  { id: "sushi-salmon", name: "Salmon Sushi Set", price: 18.0 },
-  { id: "burger-classic", name: "Classic Burger", price: 9.75 },
-];
-
-export function DemoMenu() {
-  const { addToCart } = useCart();
-  return (
-    <div className="p-6 grid grid-cols-1 sm:grid-cols-3 gap-4">
-      {DEMO_DISHES.map((dish) => (
-        <div key={dish.id} className="p-4 border border-gray-200 rounded-xl">
-          <p className="font-medium text-gray-900 mb-1">{dish.name}</p>
-          <p className="text-sm text-gray-400 mb-3">
-            ${dish.price.toFixed(2)}
-          </p>
-          <button
-            type="button"
-            onClick={() => addToCart(dish)}
-            className="px-4 py-2 rounded-full bg-orange-500 text-white text-sm hover:bg-orange-600 transition-colors"
-          >
-            Add to cart
-          </button>
-        </div>
-      ))}
-    </div>
-  );
-}

@@ -26,7 +26,7 @@ export default function Sidebar({
   active,
   onNavigate,
   promo = {
-    discount: "50% OFF",
+    discount: "20% OFF",
     message: "on your first order",
     ctaLabel: "Order Now",
     image:
@@ -50,7 +50,7 @@ export default function Sidebar({
               key={id}
               type="button"
               onClick={() => setActive(id)}
-              className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm transition-colors ${
+              className={`flex items-center gap-2 px-3 py-2.5 rounded-lg text-sm transition-colors ${
                 isActive
                   ? "bg-orange-500 text-white font-medium"
                   : "text-gray-500 hover:bg-gray-50 hover:text-gray-800"

@@ -4,54 +4,27 @@ import {
   Heart,
   ShoppingBag,
   User,
-  Plus,
-  Minus,
-  Trash2,
   X,
 } from "lucide-react";
 import { useCart } from "../context/CartContext";
+import { createDemoOrder } from "../api/mealApi";
 
 /* ------------------------------------------------------------------ */
-/* Payment helpers — formatting + light validation only. This never    */
-/* talks to a real processor; wire onPlaceOrder up to Stripe or your   */
-/* own backend for real charges (never handle raw card numbers on     */
-/* your own server — use a processor's hosted fields / tokenization). */
+/* Demo checkout helpers. This flow records an order with the backend  */
+/* but never collects or stores payment-card data.                    */
 /* ------------------------------------------------------------------ */
-function formatCardNumber(value) {
-  const digits = value.replace(/\D/g, "").slice(0, 16);
-  return digits.replace(/(.{4})/g, "$1 ").trim();
-}
+const EMPTY_CHECKOUT_FORM = {
+  name: "",
+  address: "",
+};
 
-function formatExpiry(value) {
-  const digits = value.replace(/\D/g, "").slice(0, 4);
-  if (digits.length < 3) return digits;
-  return `${digits.slice(0, 2)}/${digits.slice(2)}`;
-}
-
-function isPaymentFormValid(form) {
-  const cardDigits = form.cardNumber.replace(/\s/g, "");
-  const expiryValid = /^\d{2}\/\d{2}$/.test(form.expiry);
+function isCheckoutFormValid(form) {
   return (
     form.name.trim().length > 1 &&
-    form.address.trim().length > 3 &&
-    cardDigits.length === 16 &&
-    expiryValid &&
-    /^\d{3,4}$/.test(form.cvv)
+    form.address.trim().length > 3
   );
 }
 
-const EMPTY_PAYMENT_FORM = {
-  name: "",
-  address: "",
-  cardNumber: "",
-  expiry: "",
-  cvv: "",
-};
-
-/* ------------------------------------------------------------------ */
-/* Cart panel — slides in from the right. Three views: cart review,    */
-/* checkout form, order confirmation.                                 */
-/* ------------------------------------------------------------------ */
 function CartPanel() {
   const {
     items,
@@ -59,14 +32,17 @@ function CartPanel() {
     setQuantity,
     cartTotal,
     clearCart,
+    addOrder,
+    orders,
     isOpen,
     setIsOpen,
   } = useCart();
 
   const [view, setView] = useState("cart"); // 'cart' | 'checkout' | 'success'
-  const [form, setForm] = useState(EMPTY_PAYMENT_FORM);
+  const [form, setForm] = useState(EMPTY_CHECKOUT_FORM);
   const [isProcessing, setIsProcessing] = useState(false);
   const [orderTotal, setOrderTotal] = useState(0);
+  const [orderMessage, setOrderMessage] = useState("");
 
   if (!isOpen) return null;
 
@@ -74,35 +50,41 @@ function CartPanel() {
     setIsOpen(false);
     setTimeout(() => {
       setView("cart");
-      setForm(EMPTY_PAYMENT_FORM);
+      setForm(EMPTY_CHECKOUT_FORM);
+      setOrderMessage("");
     }, 200);
   };
 
   const updateField = (field) => (e) => {
-    const raw = e.target.value;
-    const value =
-      field === "cardNumber"
-        ? formatCardNumber(raw)
-        : field === "expiry"
-        ? formatExpiry(raw)
-        : field === "cvv"
-        ? raw.replace(/\D/g, "").slice(0, 4)
-        : raw;
-    setForm((prev) => ({ ...prev, [field]: value }));
+    setForm((prev) => ({ ...prev, [field]: e.target.value }));
   };
 
-  const placeOrder = (e) => {
+  const placeOrder = async (e) => {
     e.preventDefault();
-    if (!isPaymentFormValid(form)) return;
+    if (!isCheckoutFormValid(form)) return;
     setIsProcessing(true);
-    // Simulated network delay — replace with a real call to your
-    // payment processor / backend order endpoint.
-    setTimeout(() => {
-      setOrderTotal(cartTotal);
+    setOrderMessage("");
+
+    try {
+      const response = await createDemoOrder({
+        customerName: form.name.trim(),
+        address: form.address.trim(),
+        items: items.map((item) => ({
+          id: item.id,
+          name: item.name,
+          unitPrice: Number(item.price),
+          quantity: item.quantity,
+        })),
+      });
+      setOrderTotal(response.total);
+      addOrder(response);
       clearCart();
-      setIsProcessing(false);
       setView("success");
-    }, 1200);
+    } catch (error) {
+      setOrderMessage(error.message || "Could not place the demo order.");
+    } finally {
+      setIsProcessing(false);
+    }
   };
 
   return (
@@ -117,7 +99,7 @@ function CartPanel() {
           <h2 className="text-base font-semibold text-gray-900">
             {view === "cart" && "Your cart"}
             {view === "checkout" && "Checkout"}
-            {view === "success" && "Order placed"}
+            {view === "success" && "Order confirmed"}
           </h2>
           {!isProcessing && (
             <button
@@ -147,33 +129,29 @@ function CartPanel() {
                           {item.name}
                         </p>
                         <p className="text-sm text-gray-400">
-                          ${item.price.toFixed(2)}
+                          ${(Number(item.price) || 0).toFixed(2)} × {item.quantity}
                         </p>
                       </div>
 
                       <div className="flex items-center gap-2 border border-gray-200 rounded-full px-1.5 py-1">
                         <button
                           type="button"
-                          onClick={() =>
-                            setQuantity(item.id, item.quantity - 1)
-                          }
+                          onClick={() => setQuantity(item.id, item.quantity - 1)}
                           aria-label={`Decrease ${item.name} quantity`}
                           className="text-gray-500 hover:text-gray-900"
                         >
-                          <Minus className="w-3.5 h-3.5" />
+                          <span aria-hidden="true">−</span>
                         </button>
                         <span className="text-sm w-4 text-center">
                           {item.quantity}
                         </span>
                         <button
                           type="button"
-                          onClick={() =>
-                            setQuantity(item.id, item.quantity + 1)
-                          }
+                          onClick={() => setQuantity(item.id, item.quantity + 1)}
                           aria-label={`Increase ${item.name} quantity`}
                           className="text-gray-500 hover:text-gray-900"
                         >
-                          <Plus className="w-3.5 h-3.5" />
+                          <span aria-hidden="true">+</span>
                         </button>
                       </div>
 
@@ -183,13 +161,32 @@ function CartPanel() {
                         aria-label={`Remove ${item.name}`}
                         className="text-gray-300 hover:text-red-500 transition-colors"
                       >
-                        <Trash2 className="w-4 h-4" />
+                        <span aria-hidden="true">✕</span>
                       </button>
                     </li>
                   ))}
                 </ul>
               )}
             </div>
+
+            {orders.length > 0 && (
+              <div className="border-t border-gray-100 px-5 py-4">
+                <p className="text-xs font-semibold text-gray-500 mb-2">
+                  Recent demo orders
+                </p>
+                <ul className="space-y-2">
+                  {orders.slice(0, 3).map((order) => (
+                    <li
+                      key={order.orderId}
+                      className="flex items-center justify-between gap-3 text-xs text-gray-600"
+                    >
+                      <span className="truncate">{order.orderId}</span>
+                      <span>${Number(order.total).toFixed(2)}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
 
             {items.length > 0 && (
               <div className="px-5 py-4 border-t border-gray-100">
@@ -217,9 +214,14 @@ function CartPanel() {
             className="flex-1 overflow-y-auto px-5 py-4 flex flex-col"
           >
             <div className="space-y-4 flex-1">
+              <div className="rounded-lg bg-orange-50 px-3 py-2 text-xs text-orange-700">
+                Demo order only — no payment is processed and no restaurant
+                fulfillment is triggered.
+              </div>
+
               <div>
                 <label className="text-xs text-gray-500 mb-1 block">
-                  Name on card
+                  Your name
                 </label>
                 <input
                   type="text"
@@ -244,52 +246,6 @@ function CartPanel() {
                   className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm outline-none focus:border-orange-400"
                 />
               </div>
-
-              <div>
-                <label className="text-xs text-gray-500 mb-1 block">
-                  Card number
-                </label>
-                <input
-                  type="text"
-                  inputMode="numeric"
-                  value={form.cardNumber}
-                  onChange={updateField("cardNumber")}
-                  placeholder="1234 5678 9012 3456"
-                  required
-                  className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm outline-none focus:border-orange-400"
-                />
-              </div>
-
-              <div className="flex gap-3">
-                <div className="flex-1">
-                  <label className="text-xs text-gray-500 mb-1 block">
-                    Expiry
-                  </label>
-                  <input
-                    type="text"
-                    inputMode="numeric"
-                    value={form.expiry}
-                    onChange={updateField("expiry")}
-                    placeholder="MM/YY"
-                    required
-                    className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm outline-none focus:border-orange-400"
-                  />
-                </div>
-                <div className="flex-1">
-                  <label className="text-xs text-gray-500 mb-1 block">
-                    CVV
-                  </label>
-                  <input
-                    type="text"
-                    inputMode="numeric"
-                    value={form.cvv}
-                    onChange={updateField("cvv")}
-                    placeholder="123"
-                    required
-                    className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm outline-none focus:border-orange-400"
-                  />
-                </div>
-              </div>
             </div>
 
             <div className="pt-4 mt-4 border-t border-gray-100">
@@ -309,10 +265,10 @@ function CartPanel() {
               </button>
               <button
                 type="submit"
-                disabled={!isPaymentFormValid(form) || isProcessing}
+                disabled={!isCheckoutFormValid(form) || isProcessing}
                 className="w-full py-2.5 rounded-full bg-orange-500 text-white text-sm font-medium hover:bg-orange-600 transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
               >
-                {isProcessing ? "Processing…" : `Pay $${cartTotal.toFixed(2)}`}
+                {isProcessing ? "Saving demo order…" : "Place demo order"}
               </button>
             </div>
           </form>
@@ -324,10 +280,16 @@ function CartPanel() {
               ✓
             </div>
             <p className="text-base font-semibold text-gray-900">
-              Thanks — your order is on its way!
+              Thanks — your demo order is confirmed!
             </p>
             <p className="text-sm text-gray-400">
-              ${orderTotal.toFixed(2)} charged
+              Order ID: {orders[0]?.orderId || "TH-DEMO"}
+            </p>
+            <p className="text-sm text-gray-400">
+              ${orderTotal.toFixed(2)} — no payment was charged
+            </p>
+            <p className="text-xs text-orange-700 bg-orange-50 rounded-lg px-3 py-2 w-full">
+              Demo order only — no payment was processed.
             </p>
             <button
               type="button"
@@ -353,7 +315,7 @@ export default function Navbar() {
     <nav className="w-full bg-white px-6 py-3 flex items-center justify-between gap-6 border-b border-gray-100">
       <div className="flex items-center gap-2 shrink-0">
         <img
-          src="/logo.png"
+          src="/logo.svg"
           alt="TasteHouse logo"
           className="w-9 h-9 rounded-full object-cover bg-orange-500"
         />
