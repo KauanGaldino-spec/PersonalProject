@@ -6,18 +6,30 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
+firebase-debug.log*
 
 node_modules
 dist
 dist-ssr
 *.local
 
-# Demo order persistence
-server/data/*.json
+# Firebase
+# NOTE: the web config in src/firebase.js is NOT a secret (it ships in the bundle).
+# What must never be committed are Admin SDK / service account credentials:
+.firebase/
+*-firebase-adminsdk-*.json
+serviceAccount*.json
+service-account*.json
 
 # Editor directories and files
+# Team-shared VS Code config is committed on purpose; only personal/local files are ignored.
 .vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
 !.vscode/extensions.json
+!.vscode/*.code-snippets
+.vscode/*.local.json
 .idea
 .DS_Store
 *.suo

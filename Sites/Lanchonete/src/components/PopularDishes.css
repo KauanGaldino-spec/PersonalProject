@@ -1,0 +1,247 @@
+/* ── Popular Dishes Section ────────────────────────────── */
+
+.popular-section {
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 1rem 1rem 3rem;
+}
+
+/* ── Header ───────────────────────────────────────────── */
+
+.popular-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.popular-header h2 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: #1a1a1a;
+}
+
+.popular-view-all {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #ff6b2b;
+  text-decoration: none;
+  transition: color 0.2s, gap 0.25s;
+}
+
+.popular-view-all:hover {
+  color: #ff5a1a;
+  gap: 0.6rem;
+}
+
+/* ── Card grid ────────────────────────────────────────── */
+
+.popular-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1rem;
+}
+
+/* ── Card ─────────────────────────────────────────────── */
+
+.popular-card {
+  display: flex;
+  flex-direction: column;
+  border-radius: 1.25rem;
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.popular-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08),
+              0 4px 10px rgba(0, 0, 0, 0.04);
+}
+
+/* ── Image wrapper ────────────────────────────────────── */
+
+.popular-card-img-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem 1rem;
+  overflow: hidden;
+}
+
+.popular-card-img-wrap img {
+  width: 7.5rem;
+  height: 7.5rem;
+  object-fit: cover;
+  border-radius: 50%;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.popular-card:hover .popular-card-img-wrap img {
+  transform: scale(1.08);
+}
+
+/* ── Badges ───────────────────────────────────────────── */
+
+.popular-badge {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  line-height: 1.5;
+}
+
+.popular-badge--bestseller {
+  background-color: #27ae60;
+  color: #fff;
+}
+
+.popular-badge--discount {
+  background-color: #ff6b2b;
+  color: #fff;
+}
+
+/* ── Card info ────────────────────────────────────────── */
+
+.popular-card-info {
+  padding: 0.75rem 1rem 1rem;
+}
+
+.popular-card-info h3 {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  line-height: 1.3;
+  margin-bottom: 0.15rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.popular-card-sub {
+  font-size: 0.75rem;
+  color: #9e9e9e;
+  margin-bottom: 0.5rem;
+}
+
+/* ── Footer row (price + rating) ──────────────────────── */
+
+.popular-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 0.5rem;
+}
+
+.popular-card-price {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #1a1a1a;
+}
+
+.popular-card-rating {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #5a5a5a;
+}
+
+.popular-star-icon {
+  width: 0.85rem;
+  height: 0.85rem;
+  fill: #f5a623;
+  color: #f5a623;
+}
+
+/* ── Responsive ───────────────────────────────────────── */
+
+@media (max-width: 1024px) {
+  .popular-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .popular-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+  }
+
+  .popular-card-img-wrap {
+    padding: 1rem 0.75rem;
+  }
+
+  .popular-card-img-wrap img {
+    width: 5.5rem;
+    height: 5.5rem;
+  }
+
+  .popular-header h2 {
+    font-size: 1.25rem;
+  }
+}
+
+.popular-favorite-btn {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: all 0.2s;
+  z-index: 2;
+  backdrop-filter: blur(4px);
+}
+
+.popular-favorite-btn:hover {
+  transform: scale(1.1);
+  background: white;
+}
+
+.popular-heart-active {
+  fill: #FF3B30;
+  color: #FF3B30;
+}
+
+.popular-heart-inactive {
+  fill: transparent;
+  color: #9E9E9E;
+}
+
+/* Badge shown instead of the "+" button for demo/fallback dishes */
+.popular-demo-tag {
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  background: #FFF8E6;
+  border: 1px solid #F2D699;
+  color: #7A5B00;
+  font-size: 0.7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+

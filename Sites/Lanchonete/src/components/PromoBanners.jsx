@@ -1,87 +1,84 @@
-import { ArrowRight, Check, Tag } from "lucide-react";
+import React from 'react';
+import { ArrowRight } from 'lucide-react';
+import './PromoBanners.css';
 
-/* ------------------------------------------------------------------ */
-/* Promo banners — two full-width promo cards below Popular Dishes.    */
-/* ------------------------------------------------------------------ */
-export default function PromoBanners() {
+const banners = [
+  {
+    tag: 'OFERTA POR TEMPO LIMITADO',
+    tagColor: '#27ae60',
+    title: '30% DE DESCONTO',
+    titleHighlight: 'No Seu Primeiro Pedido!',
+    subtitle: 'Use o código TASTY30 e aproveite.',
+    image: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=500&q=80',
+    bg: 'linear-gradient(135deg, #e8f5e1 0%, #f0f9eb 100%)',
+    btnBg: '#27ae60',
+    btnHover: '#219150',
+  },
+  {
+    tag: 'ESPECIAL FIM DE SEMANA',
+    tagColor: '#ff6b2b',
+    title: 'Combos para a Família',
+    titleHighlight: '',
+    subtitle: 'Alimente sua família com nossos combos especiais.',
+    image: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=500&q=80',
+    bg: 'linear-gradient(135deg, #fef9f0 0%, #fdf1e0 100%)',
+    btnBg: '#ff6b2b',
+    btnHover: '#ff5a1a',
+  },
+];
+
+export default function PromoBanners({ onNavigate }) {
   return (
-    <section className="py-6 grid grid-cols-1 lg:grid-cols-2 gap-6">
-      {/* Left — green "Flat 30% OFF" banner */}
-      <div className="relative rounded-2xl overflow-hidden bg-gradient-to-br from-green-50 via-green-50 to-emerald-50 p-6 sm:p-8 flex flex-col justify-between min-h-[240px]">
-        <div className="relative z-10">
-          <div className="flex items-center gap-2 mb-4">
-            <span className="w-6 h-6 rounded-full bg-green-500 flex items-center justify-center text-white shrink-0">
-              <Check className="w-3.5 h-3.5" />
-            </span>
-            <span className="text-xs font-bold tracking-wide text-green-700">
-              LIMITED TIME OFFER
-            </span>
+    <section className="promo-section">
+      <div className="promo-grid">
+        {banners.map((banner) => (
+          <div
+            className="promo-banner"
+            key={banner.title}
+            style={{ background: banner.bg }}
+          >
+            {/* Decorative dots */}
+            <div className="promo-dots promo-dots--tl" />
+            <div className="promo-dots promo-dots--br" />
+
+            <div className="promo-content">
+              <span
+                className="promo-tag"
+                style={{ backgroundColor: banner.tagColor }}
+              >
+                {banner.tag}
+              </span>
+
+              <h3 className="promo-title">
+                {banner.title}
+                {banner.titleHighlight && (
+                  <>
+                    <br />
+                    {banner.titleHighlight}
+                  </>
+                )}
+              </h3>
+
+              <p className="promo-subtitle">{banner.subtitle}</p>
+
+              <button
+                className="promo-btn"
+                onClick={() => onNavigate?.('Offers')}
+                style={{
+                  '--btn-bg': banner.btnBg,
+                  '--btn-hover': banner.btnHover,
+                }}
+              >
+                Pedir Agora
+                <ArrowRight className="promo-btn-icon" />
+              </button>
+            </div>
+
+            <div className="promo-img-wrap">
+              <img src={banner.image} alt={banner.title} />
+            </div>
           </div>
-          <h3 className="text-2xl sm:text-3xl font-extrabold text-gray-900 leading-tight">
-            Flat 30% OFF
-            <br />
-            On Your First Order!
-          </h3>
-          <p className="text-sm text-gray-600 mt-3 max-w-xs">
-            Use code TASTY30 at checkout and enjoy delicious rewards.
-          </p>
-          <button className="mt-5 inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-green-600 text-white text-sm font-semibold hover:bg-green-700 transition-colors">
-            Order Now
-            <ArrowRight size={14} />
-          </button>
-        </div>
-
-        <img
-          src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?q=80&w=600&auto=format&fit=crop"
-          alt="Grilled chicken salad bowl"
-          className="absolute right-0 bottom-0 w-3/5 h-full object-cover object-center opacity-90"
-        />
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            background:
-              "linear-gradient(to right, #ecfdf5 0%, transparent 55%)",
-          }}
-        />
-      </div>
-
-      {/* Right — orange "Family Combo Meals" banner */}
-      <div className="relative rounded-2xl overflow-hidden bg-gradient-to-br from-orange-50 via-amber-50 to-orange-100 p-6 sm:p-8 flex flex-col justify-between min-h-[240px]">
-        <div className="relative z-10">
-          <div className="flex items-center gap-2 mb-4">
-            <span className="w-6 h-6 rounded-full bg-orange-500 flex items-center justify-center text-white shrink-0">
-              <Tag className="w-3.5 h-3.5" />
-            </span>
-            <span className="text-xs font-bold tracking-wide text-orange-700">
-              WEEKEND SPECIAL
-            </span>
-          </div>
-          <h3 className="text-2xl sm:text-3xl font-extrabold text-gray-900 leading-tight">
-            Family Combo
-            <br />
-            Meals
-          </h3>
-          <p className="text-sm text-gray-600 mt-3 max-w-xs">
-            Feed your family with our special combo deals.
-          </p>
-          <button className="mt-5 inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-orange-500 text-white text-sm font-semibold hover:bg-orange-600 transition-colors">
-            Order Now
-            <ArrowRight size={14} />
-          </button>
-        </div>
-
-        <img
-          src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=600&auto=format&fit=crop"
-          alt="Burger, fries and drink combo"
-          className="absolute right-0 bottom-0 w-2/3 h-full object-cover object-center"
-        />
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            background:
-              "linear-gradient(to right, #fff7ed 0%, transparent 50%)",
-          }}
-        />
+        ))}
       </div>
     </section>
   );

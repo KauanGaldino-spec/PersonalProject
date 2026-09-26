@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ls \"C:\\\\Users\\\\Kauan\\\\Downloads\\\\Sites\\\\Project\\\\\")",
+      "Read(//c/Users/Kauan/Downloads/Sites/**)",
+      "Bash(npm --version)",
+      "Bash(npm install *)",
+      "Bash(npx vite *)",
+      "Bash(npm run *)",
+      "Bash(python -c \"from PIL import Image; im=Image.open\\('C:/Users/Kauan/AppData/Local/Temp/claude/c--Users-Kauan-Downloads-Sites-Project/01406892-830b-4c44-83fb-f4d8b67489bc/images/1.png'\\); print\\(im.size\\)\")",
+      "Read(//c/Users/Kauan/.claude/projects/c--Users-Kauan-Downloads-Sites-Project/memory//**)",
+      "Read(//c/Users/Kauan/.claude/projects/c--Users-Kauan-Downloads-Sites-Project/memory/**)",
+      "Bash(dir /b /s /a \"C:\\\\Users\\\\Kauan\\\\.claude\\\\projects\\\\c--Users-Kauan-Downloads-Sites-Project\\\\memory\\\\*\")"
+    ]
+  }
+}

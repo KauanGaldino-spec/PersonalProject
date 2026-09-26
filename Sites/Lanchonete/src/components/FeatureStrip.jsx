@@ -1,52 +1,35 @@
-import { Truck, RefreshCw, ShieldCheck, Headphones } from "lucide-react";
+import React from 'react';
+import { Truck, RotateCcw, ShieldCheck, Headset } from 'lucide-react';
 
-/* ------------------------------------------------------------------ */
-/* Feature strip — 4 trust / benefit cards under the hero.             */
-/* ------------------------------------------------------------------ */
 const FEATURES = [
-  {
-    icon: Truck,
-    title: "Free Delivery",
-    desc: "On orders over $20",
-  },
-  {
-    icon: RefreshCw,
-    title: "Easy Returns",
-    desc: "7-day return policy",
-  },
-  {
-    icon: ShieldCheck,
-    title: "Secure Payment",
-    desc: "100% secure checkout",
-  },
-  {
-    icon: Headphones,
-    title: "24/7 Support",
-    desc: "We're here to help",
-  },
+    { icon: Truck, title: 'Entrega Grátis', subtitle: 'Em pedidos acima de R$ 20' },
+    { icon: RotateCcw, title: 'Troca Fácil', subtitle: 'Política de 7 dias' },
+    { icon: ShieldCheck, title: 'Pagamento Seguro', subtitle: 'Checkout 100% seguro' },
+    { icon: Headset, title: 'Suporte 24/7', subtitle: "Estamos aqui para ajudar" },
 ];
 
-export default function FeatureStrip() {
-  return (
-    <section className="py-6">
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        {FEATURES.map(({ icon: Icon, title, desc }) => (
-          <div
-            key={title}
-            className="flex items-center gap-4 bg-gray-50/80 rounded-2xl p-4 border border-gray-100/60"
-          >
-            <div className="w-11 h-11 rounded-full bg-orange-100 flex items-center justify-center shrink-0">
-              <Icon className="w-5 h-5 text-orange-500" />
+const FeatureStrip = () => {
+    return (
+        <section className="mx-auto max-w-7xl px-4 py-6 sm:px-6">
+            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
+                {FEATURES.map(({ icon: Icon, title, subtitle }) => (
+                    <div
+                        key={title}
+                        className="flex items-center gap-3 rounded-2xl border border-black/5 bg-white/70 px-5 py-4 shadow-sm backdrop-blur"
+                        style={{ background: 'linear-gradient(135deg, #FFF7EC 0%, #FDECD6 100%)' }}
+                    >
+                        <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-[var(--brand-color)]/30 bg-white text-[var(--brand-color)]">
+                            <Icon className="h-5 w-5" />
+                        </span>
+                        <div>
+                            <p className="text-sm font-bold text-[#1A1A1A]">{title}</p>
+                            <p className="text-xs text-[#9E9E9E]">{subtitle}</p>
+                        </div>
+                    </div>
+                ))}
             </div>
-            <div className="min-w-0">
-              <p className="text-sm font-semibold text-gray-900 truncate">
-                {title}
-              </p>
-              <p className="text-xs text-gray-500">{desc}</p>
-            </div>
-          </div>
-        ))}
-      </div>
-    </section>
-  );
-}
+        </section>
+    );
+};
+
+export default FeatureStrip;

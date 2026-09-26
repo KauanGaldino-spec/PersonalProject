@@ -1,0 +1,9 @@
+{
+  "recommendations": [
+    "dbaeumer.vscode-eslint",
+    "bradlc.vscode-tailwindcss",
+    "ChFlick.firecode",
+    "toba.vsfire"
+  ],
+  "unwantedRecommendations": []
+}

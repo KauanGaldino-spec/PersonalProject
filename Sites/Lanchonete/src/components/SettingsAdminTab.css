@@ -1,0 +1,118 @@
+.settings-admin-tab {
+  animation: fadeIn 0.3s ease;
+  max-width: 800px;
+}
+
+.settings-header {
+  margin-bottom: 2rem;
+}
+
+.settings-subtitle {
+  color: #5A5A5A;
+  margin: 0;
+}
+
+.settings-card {
+  background: white;
+  border-radius: 1.5rem;
+  padding: 2rem;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+  border: 1px solid #F0F0F0;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.settings-group label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #1A1A1A;
+  margin-bottom: 0.75rem;
+}
+
+.settings-group input[type="text"] {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid #E0E0E0;
+  border-radius: 0.75rem;
+  font-family: inherit;
+  font-size: 1rem;
+  transition: border-color 0.2s;
+}
+
+.settings-group input[type="text"]:focus {
+  border-color: var(--brand-color);
+  outline: none;
+}
+
+.color-picker-wrap {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.color-picker-wrap input[type="color"] {
+  -webkit-appearance: none;
+  width: 3rem;
+  height: 3rem;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  padding: 0;
+  background: transparent;
+}
+
+.color-picker-wrap input[type="color"]::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+.color-picker-wrap input[type="color"]::-webkit-color-swatch {
+  border: none;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.color-picker-wrap input[type="text"] {
+  width: 120px;
+}
+
+.settings-help {
+  font-size: 0.85rem;
+  color: #9E9E9E;
+  margin: 0.5rem 0 0 0;
+}
+
+.btn-save-settings {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 1rem;
+  background: var(--brand-color);
+  color: white;
+  border: none;
+  border-radius: 0.75rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-save-settings:hover {
+  filter: brightness(0.9);
+}
+
+.btn-save-settings:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.btn-save-settings.btn-success {
+  background: #10B981; /* Green success color */
+  color: white;
+}

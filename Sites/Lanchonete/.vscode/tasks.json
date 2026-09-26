@@ -1,0 +1,66 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "dev",
+      "detail": "Vite dev server on http://localhost:5173",
+      "type": "npm",
+      "script": "dev",
+      "isBackground": true,
+      "problemMatcher": {
+        "owner": "vite",
+        "pattern": [{ "regexp": "^$" }],
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "^.*$",
+          "endsPattern": "(ready in|Local:\\s+http)"
+        }
+      },
+      "presentation": { "reveal": "always", "panel": "dedicated" },
+      "group": "build"
+    },
+    {
+      "label": "build",
+      "detail": "Production build into dist/",
+      "type": "npm",
+      "script": "build",
+      "problemMatcher": [],
+      "group": { "kind": "build", "isDefault": true }
+    },
+    {
+      "label": "lint",
+      "detail": "ESLint over the whole repository",
+      "type": "npm",
+      "script": "lint",
+      "problemMatcher": ["$eslint-stylish"]
+    },
+    {
+      "label": "check:rules",
+      "detail": "Verify the Firestore security rules are still locked down",
+      "type": "npm",
+      "script": "check:rules",
+      "problemMatcher": []
+    },
+    {
+      "label": "test",
+      "detail": "Vitest — unit tests for the pure helpers in src/utils",
+      "type": "npm",
+      "script": "test",
+      "problemMatcher": []
+    },
+    {
+      "label": "doctor",
+      "detail": "Validate the Firebase configuration (complete + consistent)",
+      "type": "npm",
+      "script": "doctor",
+      "problemMatcher": []
+    },
+    {
+      "label": "verify",
+      "detail": "Run lint + test + doctor + check:rules + build (use before committing)",
+      "dependsOrder": "sequence",
+      "dependsOn": ["lint", "test", "doctor", "check:rules", "build"],
+      "problemMatcher": []
+    }
+  ]
+}

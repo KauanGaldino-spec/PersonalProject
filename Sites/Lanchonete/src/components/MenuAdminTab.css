@@ -1,0 +1,250 @@
+.menu-admin-tab {
+  animation: fadeIn 0.3s ease;
+}
+
+.menu-admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.btn-add-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #1A1A1A;
+  color: white;
+  padding: 0.6rem 1.25rem;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-add-item:hover {
+  background: #333;
+}
+
+.btn-seed {
+  background: #FFF5F0;
+  color: var(--brand-color);
+  padding: 0.6rem 1.25rem;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  border: 1px solid #FFE3D6;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-seed:hover {
+  background: #FFE3D6;
+}
+
+.menu-items-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.admin-menu-card {
+  background: white;
+  border-radius: 1rem;
+  overflow: hidden;
+  border: 1px solid #E0E0E0;
+  transition: box-shadow 0.2s;
+}
+
+.admin-menu-card:hover {
+  box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+}
+
+.admin-menu-img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+}
+
+.admin-menu-details {
+  padding: 1.25rem;
+}
+
+.admin-menu-category {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--brand-color);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.admin-menu-details h4 {
+  margin: 0.5rem 0;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #1A1A1A;
+}
+
+.admin-menu-price {
+  font-weight: 800;
+  font-size: 1.25rem;
+  color: #1A1A1A;
+  margin-bottom: 1rem;
+}
+
+.admin-menu-actions {
+  display: flex;
+  gap: 0.5rem;
+  border-top: 1px dashed #E0E0E0;
+  padding-top: 1rem;
+}
+
+.btn-edit, .btn-delete {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  flex: 1;
+  justify-content: center;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: all 0.2s;
+}
+
+.btn-edit {
+  background: #F7F7F7;
+  color: #1A1A1A;
+}
+
+.btn-edit:hover {
+  background: #E0E0E0;
+}
+
+.btn-delete {
+  background: #FEF2F2;
+  color: #DC2626;
+}
+
+.btn-delete:hover {
+  background: #FEE2E2;
+}
+
+.empty-menu-state {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 4rem 2rem;
+  background: white;
+  border: 1px dashed #D6D6D6;
+  border-radius: 1rem;
+}
+
+/* Modal Styles */
+.menu-edit-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  backdrop-filter: blur(4px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.menu-edit-modal {
+  background: white;
+  border-radius: 1.5rem;
+  width: 100%;
+  max-width: 600px;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 2rem;
+  box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.modal-header h3 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin: 0;
+}
+
+.modal-header button {
+  background: none;
+  border: none;
+  color: #9E9E9E;
+  cursor: pointer;
+}
+
+.menu-edit-form .form-group {
+  margin-bottom: 1.25rem;
+}
+
+.menu-edit-form label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #1A1A1A;
+}
+
+.menu-edit-form input,
+.menu-edit-form select,
+.menu-edit-form textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid #E0E0E0;
+  border-radius: 0.5rem;
+  font-family: inherit;
+  font-size: 0.95rem;
+}
+
+.menu-edit-form .form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid #F0F0F0;
+}
+
+.btn-cancel {
+  padding: 0.75rem 1.5rem;
+  background: white;
+  border: 1px solid #E0E0E0;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-save {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: var(--brand-color);
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-save:hover {
+  background: var(--brand-color-dark);
+}

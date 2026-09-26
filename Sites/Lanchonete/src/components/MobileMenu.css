@@ -1,0 +1,222 @@
+/* ── Floating trigger ──────────────────────────────────── */
+
+.mobile-menu-dock {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 7rem;
+  background: linear-gradient(to top, rgba(255,255,255,1) 40%, rgba(255,255,255,0));
+  z-index: 89;
+  pointer-events: none;
+}
+
+.mobile-menu-trigger {
+  display: none;
+  position: fixed;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 90;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 2rem;
+  border: none;
+  border-radius: 999px;
+  background: #ff6b2b;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 8px 28px rgba(255, 107, 43, 0.4),
+              0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+  pointer-events: auto;
+}
+
+.mobile-menu-trigger:hover {
+  background: #ff5a1a;
+  transform: translateX(-50%) scale(1.04);
+}
+
+.mobile-menu-trigger:active {
+  transform: translateX(-50%) scale(0.97);
+}
+
+/* Show only when sidebar is hidden (<lg) */
+@media (max-width: 1023px) {
+  .mobile-menu-dock,
+  .mobile-menu-trigger {
+    display: inline-flex;
+  }
+}
+
+/* ── Overlay ──────────────────────────────────────────── */
+
+.mobile-menu-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 98;
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(2px);
+  animation: menuFadeIn 0.2s ease-out;
+}
+
+@keyframes menuFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* ── Drawer ───────────────────────────────────────────── */
+
+.mobile-menu-drawer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 99;
+  width: 17rem;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  box-shadow: 4px 0 24px rgba(0, 0, 0, 0.08);
+  transform: translateX(-100%);
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.mobile-menu-drawer--open {
+  transform: translateX(0);
+}
+
+/* ── Header ───────────────────────────────────────────── */
+
+.mobile-menu-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 1.25rem 1rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.mobile-menu-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+}
+
+.mobile-menu-logo-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 50%;
+  background: #ff6b2b;
+}
+
+.mobile-menu-logo-text {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #1a1a1a;
+  letter-spacing: -0.02em;
+}
+
+.mobile-menu-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border: none;
+  border-radius: 50%;
+  background: #f7f7f7;
+  color: #5a5a5a;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.mobile-menu-close:hover {
+  background: #eee;
+}
+
+/* ── Nav items ────────────────────────────────────────── */
+
+.mobile-menu-nav {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 1rem 0.75rem;
+  overflow-y: auto;
+}
+
+.mobile-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.7rem 1rem;
+  border: none;
+  border-radius: 999px;
+  background: transparent;
+  color: #5a5a5a;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.2s, color 0.2s;
+}
+
+.mobile-menu-item:hover {
+  background: #f7f7f7;
+  color: #1a1a1a;
+}
+
+.mobile-menu-item--active {
+  background: #ff6b2b;
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(255, 107, 43, 0.3);
+}
+
+.mobile-menu-item--active:hover {
+  background: #ff5a1a;
+  color: #fff;
+}
+
+/* ── Promo card ───────────────────────────────────────── */
+
+.mobile-menu-promo {
+  margin: 0 0.75rem 1rem;
+  padding: 1.25rem;
+  border-radius: 1rem;
+  background: linear-gradient(135deg, #ff6b2b 0%, #ff8f5a 100%);
+}
+
+.mobile-menu-promo-text {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.4;
+  margin-bottom: 0.75rem;
+}
+
+.mobile-menu-promo-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 1rem;
+  border: none;
+  border-radius: 999px;
+  background: #fff;
+  color: #ff6b2b;
+  font-size: 0.75rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+}
+
+.mobile-menu-promo-btn:hover {
+  background: rgba(255, 255, 255, 0.9);
+  transform: scale(1.04);
+}

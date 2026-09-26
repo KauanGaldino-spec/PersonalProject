@@ -1,0 +1,229 @@
+rules_version = '2';
+
+// TasteHouse — Firestore Security Rules
+//
+// Model: deny by default, then allow the minimum each screen needs.
+// NOTE: rules are additive (OR-ed). A match clause can only GRANT access, never
+// revoke it — so nothing is reachable unless it is allowed below.
+//
+// Admin rights are read from `admins/{uid}`, a collection clients CANNOT write.
+// The admin flag can therefore no longer be self-granted from the browser.
+// Add/remove admins in the Firebase Console (or with the Admin SDK) only.
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // ── Helpers ──────────────────────────────────────────────────────────────
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function uid() {
+      return request.auth.uid;
+    }
+
+    function isAdmin() {
+      return isSignedIn()
+        && exists(/databases/$(database)/documents/admins/$(uid()));
+    }
+
+    // True only when the update touches nothing but the listed keys.
+    // Stops a customer from editing e.g. `isAdmin` or an order's `total`.
+    function onlyChanged(keys) {
+      return request.resource.data.diff(resource.data).affectedKeys().hasOnly(keys);
+    }
+
+    // The submitted author id is either "anonymous" (null) or the caller's own id.
+    // Written so `request.auth` is never dereferenced for a guest.
+    function ownsOrAnonymous(submittedId) {
+      return submittedId == null
+        || (request.auth != null && submittedId == request.auth.uid);
+    }
+
+    // A delivery order is useless without somewhere to deliver it, so the contact
+    // and address are mandatory (and length-capped to keep documents sane).
+    function hasDeliveryDetails(data) {
+      return data.customer is map
+        && data.customer.name is string
+        && data.customer.name.size() > 0
+        && data.customer.name.size() <= 120
+        && data.customer.phone is string
+        && data.customer.phone.size() >= 8
+        && data.customer.phone.size() <= 20
+        && data.address is map
+        && data.address.street is string
+        && data.address.street.size() > 0
+        && data.address.street.size() <= 160
+        && data.address.number is string
+        && data.address.number.size() > 0
+        && data.address.number.size() <= 20
+        && data.address.district is string
+        && data.address.district.size() > 0
+        && data.address.district.size() <= 80
+        && data.address.city is string
+        && data.address.city.size() > 0
+        && data.address.city.size() <= 80
+        && data.address.zip is string
+        && data.address.zip.size() <= 12
+        && data.address.complement is string
+        && data.address.complement.size() <= 120;
+    }
+
+    // ── Users ────────────────────────────────────────────────────────────────
+    // Documents are private to their owner. `isAdmin` is deliberately NOT writable
+    // here anymore — admin lives in the `admins` collection below.
+
+    match /users/{userId} {
+      allow read: if isSignedIn() && uid() == userId;
+
+      // New accounts may only create their own (empty) favorites list.
+      allow create: if isSignedIn() && uid() == userId
+        && request.resource.data.keys().hasOnly(['favorites'])
+        && request.resource.data.favorites is list;
+
+      // Owners may only ever edit their favorites and their saved delivery address.
+      allow update: if isSignedIn() && uid() == userId
+        && onlyChanged(['favorites', 'lastAddress'])
+        && request.resource.data.favorites is list;
+
+      allow delete: if false;
+    }
+
+    // ── Admin allow-list ─────────────────────────────────────────────────────
+    // Readable by the signed-in user (so the app can check itself) but writable
+    // by NOBODY from the client. Manage it in the Firebase Console.
+
+    match /admins/{userId} {
+      allow read: if isSignedIn() && uid() == userId;
+      allow write: if false;
+    }
+
+    // ── Restaurant settings (white-label) ────────────────────────────────────
+    // Public read: the storefront needs the name, brand color and delivery fee
+    // before anyone logs in. Only admins may change them.
+
+    match /settings/{document} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // ── Menu ─────────────────────────────────────────────────────────────────
+
+    match /menuItems/{itemId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // ── Orders ───────────────────────────────────────────────────────────────
+    // A customer sees only their own orders; staff see (and advance) all of them.
+
+    match /orders/{orderId} {
+      allow read: if isSignedIn()
+        && (uid() == resource.data.userId || isAdmin());
+
+      // Place an order for yourself; it must be non-empty, fresh, "preparing",
+      // and carry the delivery details the kitchen needs.
+      allow create: if isSignedIn()
+        && request.resource.data.userId == uid()
+        && hasDeliveryDetails(request.resource.data)
+        && request.resource.data.items is list
+        && request.resource.data.items.size() > 0
+        && request.resource.data.total is number
+        && request.resource.data.total > 0
+        && request.resource.data.status == 'preparing'
+        && request.resource.data.createdAt == request.time;
+
+      // Only staff may change/advance/cancel a status (or delete an order).
+      allow update, delete: if isAdmin();
+    }
+
+    // ── Reviews ──────────────────────────────────────────────────────────────
+
+    match /reviews/{reviewId} {
+      allow read: if true;
+
+      allow create: if isSignedIn()
+        && request.resource.data.userId == uid()
+        && request.resource.data.rating is int
+        && request.resource.data.rating >= 1
+        && request.resource.data.rating <= 5
+        && request.resource.data.comment is string
+        && request.resource.data.comment.size() > 0
+        && request.resource.data.comment.size() <= 2000
+        && request.resource.data.helpful == 0
+        && request.resource.data.createdAt == request.time;
+
+      // Any signed-in visitor may toggle their "útil" vote; on an update only the
+      // counter and the voter list may move. Staff may edit anything.
+      // Known limitation: the ±1 delta is not verified here (see
+      // FIREBASE_SECURITY_SETUP.md for the Cloud Functions upgrade path).
+      allow update: if isAdmin()
+        || (isSignedIn()
+            && onlyChanged(['helpful', 'helpfulBy'])
+            && request.resource.data.helpful is int
+            && request.resource.data.helpful >= 0
+            && request.resource.data.helpfulBy is list);
+
+      allow delete: if isAdmin();
+    }
+
+    // ── Reservations ─────────────────────────────────────────────────────────
+    // Public booking form (guests allowed), but only staff can read submissions
+    // back — otherwise anyone could harvest customer contact data.
+
+    match /reservations/{reservationId} {
+      allow create: if ownsOrAnonymous(request.resource.data.userId)
+        && request.resource.data.keys().hasOnly(
+             ['userId', 'name', 'email', 'date', 'time', 'guests', 'requests', 'status', 'createdAt'])
+        && request.resource.data.name is string
+        && request.resource.data.name.size() > 0
+        && request.resource.data.name.size() <= 120
+        && request.resource.data.email is string
+        && request.resource.data.email.size() <= 160
+        && request.resource.data.date is string
+        && request.resource.data.date.size() == 10
+        && request.resource.data.time is string
+        && request.resource.data.time.size() <= 5
+        && request.resource.data.guests is int
+        && request.resource.data.guests >= 1
+        && request.resource.data.guests <= 50
+        && request.resource.data.requests is string
+        && request.resource.data.requests.size() <= 1000
+        && request.resource.data.status == 'pending'
+        && request.resource.data.createdAt == request.time;
+
+      allow read, update, delete: if isAdmin();
+    }
+
+    // ── Support messages ─────────────────────────────────────────────────────
+    // Same shape: anyone may write (a contact form), only staff may read.
+
+    match /supportMessages/{messageId} {
+      allow create: if ownsOrAnonymous(request.resource.data.userId)
+        && request.resource.data.keys().hasOnly(
+             ['userId', 'name', 'email', 'message', 'status', 'createdAt'])
+        && request.resource.data.name is string
+        && request.resource.data.name.size() > 0
+        && request.resource.data.name.size() <= 120
+        && request.resource.data.email is string
+        && request.resource.data.email.size() > 0
+        && request.resource.data.email.size() <= 160
+        && request.resource.data.message is string
+        && request.resource.data.message.size() > 0
+        && request.resource.data.message.size() <= 2000
+        && request.resource.data.status == 'open'
+        && request.resource.data.createdAt == request.time;
+
+      allow read, update, delete: if isAdmin();
+    }
+
+    // ── Default deny ─────────────────────────────────────────────────────────
+    // Unlisted paths already deny; this documents the intent and covers any
+    // collection added in the future.
+
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

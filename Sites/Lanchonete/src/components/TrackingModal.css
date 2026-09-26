@@ -1,0 +1,256 @@
+.tracking-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  animation: trackFadeIn 0.2s ease-out;
+}
+
+@keyframes trackFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.tracking-modal-content {
+  background: white;
+  width: 100%;
+  max-width: 450px;
+  border-radius: 1.5rem;
+  padding: 1.5rem;
+  position: relative;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  animation: trackSlideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes trackSlideUp {
+  from { transform: translateY(2rem) scale(0.95); opacity: 0; }
+  to { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+.tracking-close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: #F7F7F7;
+  color: #5A5A5A;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.tracking-close-btn:hover {
+  background: #E0E0E0;
+  color: #1A1A1A;
+}
+
+.tracking-header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.tracking-header h2 {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #1A1A1A;
+  margin: 0 0 0.25rem 0;
+}
+
+.tracking-header p {
+  font-size: 0.85rem;
+  color: #9E9E9E;
+  margin: 0;
+  font-weight: 500;
+}
+
+/* ── Map Placeholder ───────────────────────────────────────── */
+
+.tracking-map-placeholder {
+  background: #F0FDF4; /* Light green map vibe */
+  border-radius: 1rem;
+  height: 140px;
+  position: relative;
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border: 1px solid #BBF7D0;
+}
+
+/* Subtle map grid pattern */
+.tracking-map-placeholder::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(#BBF7D0 1px, transparent 1px),
+    linear-gradient(90deg, #BBF7D0 1px, transparent 1px);
+  background-size: 20px 20px;
+  opacity: 0.5;
+}
+
+.map-route {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  width: 60%;
+  justify-content: space-between;
+}
+
+.map-pin {
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  z-index: 2;
+}
+
+.restaurant-pin {
+  background: #1A1A1A;
+}
+
+.user-pin {
+  background: var(--brand-color);
+}
+
+.map-line {
+  flex: 1;
+  height: 3px;
+  background: repeating-linear-gradient(90deg, var(--brand-color), var(--brand-color) 4px, transparent 4px, transparent 8px);
+  margin: 0 -0.5rem;
+  z-index: 1;
+}
+
+.tracking-eta {
+  position: absolute;
+  bottom: 0.75rem;
+  background: white;
+  padding: 0.4rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  z-index: 2;
+  color: #5A5A5A;
+}
+
+.tracking-eta strong {
+  color: #1A1A1A;
+  font-weight: 800;
+}
+
+/* ── Timeline ───────────────────────────────────────── */
+
+.tracking-timeline {
+  display: flex;
+  flex-direction: column;
+}
+
+.timeline-step {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  opacity: 0.4;
+  transition: opacity 0.3s;
+}
+
+.timeline-step.completed {
+  opacity: 1;
+}
+
+.step-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background: #F7F7F7;
+  color: #9E9E9E;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.3s;
+}
+
+.completed .step-icon {
+  background: #FFF0E6;
+  color: var(--brand-color);
+}
+
+.active .step-icon {
+  background: var(--brand-color);
+  color: white;
+  box-shadow: 0 0 0 4px #FFF0E6;
+}
+
+.step-info {
+  padding-top: 0.5rem;
+}
+
+.step-info h4 {
+  margin: 0 0 0.2rem 0;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #1A1A1A;
+}
+
+.step-info p {
+  margin: 0;
+  font-size: 0.8rem;
+  color: #5A5A5A;
+}
+
+.timeline-connector {
+  width: 2px;
+  height: 2rem;
+  background: #E0E0E0;
+  margin-left: 1.2rem;
+  margin-top: -0.25rem;
+  margin-bottom: -0.25rem;
+}
+
+/* ── Cancelled state ───────────────────────────────────────── */
+
+.tracking-cancelled {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  text-align: center;
+  padding: 2rem 1.5rem;
+  border-radius: 1rem;
+  background: #FEF2F2;
+  border: 1px solid #FECACA;
+  color: #B91C1C;
+}
+
+.tracking-cancelled h4 {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #991B1B;
+}
+
+.tracking-cancelled p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #B91C1C;
+}
+

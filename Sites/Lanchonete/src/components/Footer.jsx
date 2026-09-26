@@ -1,123 +1,103 @@
-import { AtSign, Camera, MessageCircle } from "lucide-react";
+import React from 'react';
+import { ForkKnife } from 'lucide-react';
+import './Footer.css';
 
-/* ------------------------------------------------------------------ */
-/* Footer — brand mark + 4 link columns + newsletter + bottom bar.     */
-/* ------------------------------------------------------------------ */
-const COMPANY_LINKS = ["About Us", "Careers", "Blog", "Press", "Contact Us"];
-const SUPPORT_LINKS = ["Help Center", "Track Order", "Returns", "Shipping Info", "FAQs"];
-const LEGAL_LINKS = ["Terms & Conditions", "Privacy Policy", "Cookie Policy", "Refund Policy"];
+const COMPANY = ['Sobre Nós', 'Carreiras', 'Blog', 'Imprensa', 'Contato'];
+const SUPPORT = ['Central de Ajuda', 'Acompanhar Pedido', 'Devoluções', 'Entregas', 'FAQs'];
+const LEGAL = ['Termos e Condições', 'Política de Privacidade', 'Política de Cookies', 'Reembolsos'];
 
 export default function Footer() {
   return (
-    <footer className="bg-white border-t border-gray-100 py-12">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
-        {/* Brand */}
-        <div className="lg:col-span-1">
-          <div className="flex items-center gap-2 mb-3">
-            <img
-              src="/logo.svg"
-              alt="TasteHouse logo"
-              className="w-9 h-9 rounded-full"
-            />
-            <span className="text-lg font-bold text-gray-900">TasteHouse</span>
-          </div>
-          <p className="text-sm text-gray-500 leading-relaxed">
-            Your favorite food, delivered fast to your doorstep. Enjoy a
-            seamless ordering experience.
-          </p>
-          <div className="flex items-center gap-3 mt-4">
-            {[AtSign, Camera, MessageCircle].map((Icon, i) => (
-              <a
-                key={i}
-                href="#"
-                aria-label="Social link"
-                className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-gray-500 hover:bg-orange-100 hover:text-orange-600 transition-colors"
-              >
-                <Icon className="w-4 h-4" />
+    <footer className="site-footer">
+      <div className="footer-inner">
+        {/* Top row */}
+        <div className="footer-top">
+          {/* Brand */}
+          <div className="footer-brand">
+            <a href="/" className="footer-logo">
+              <span className="footer-logo-icon">
+                <ForkKnife className="footer-logo-svg" />
+              </span>
+              <span className="footer-logo-text">TasteHouse</span>
+            </a>
+            <p className="footer-desc">
+              Sua comida favorita, entregue rapidamente na sua porta. Aproveite a melhor experiência.
+            </p>
+            <div className="footer-socials">
+              {/* Facebook */}
+              <a href="#" aria-label="Facebook" className="footer-social-link">
+                <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16">
+                  <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
+                </svg>
               </a>
-            ))}
+              {/* Instagram */}
+              <a href="#" aria-label="Instagram" className="footer-social-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="16" height="16">
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                  <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z" />
+                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                </svg>
+              </a>
+              {/* Twitter */}
+              <a href="#" aria-label="Twitter" className="footer-social-link">
+                <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16">
+                  <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z" />
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          {/* Company */}
+          <div className="footer-col">
+            <h4>Empresa</h4>
+            <ul>
+              {COMPANY.map((item) => (
+                <li key={item}><a href="#">{item}</a></li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Support */}
+          <div className="footer-col">
+            <h4>Suporte</h4>
+            <ul>
+              {SUPPORT.map((item) => (
+                <li key={item}><a href="#">{item}</a></li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Legal */}
+          <div className="footer-col">
+            <h4>Legal</h4>
+            <ul>
+              {LEGAL.map((item) => (
+                <li key={item}><a href="#">{item}</a></li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Newsletter */}
+          <div className="footer-col footer-col--newsletter">
+            <h4>Newsletter</h4>
+            <p className="footer-newsletter-desc">
+              Inscreva-se para receber atualizações e ofertas exclusivas.
+            </p>
+            <form className="footer-newsletter-form" onSubmit={(e) => e.preventDefault()}>
+              <input type="email" placeholder="Seu E-mail" className="footer-newsletter-input" />
+              <button type="submit" className="footer-newsletter-btn">Inscrever</button>
+            </form>
           </div>
         </div>
 
-        {/* Company */}
-        <div>
-          <h4 className="text-sm font-semibold text-gray-900 mb-3">Company</h4>
-          <ul className="space-y-2">
-            {COMPANY_LINKS.map((label) => (
-              <li key={label}>
-                <a href="#" className="text-sm text-gray-500 hover:text-gray-900 transition-colors">
-                  {label}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        {/* Support */}
-        <div>
-          <h4 className="text-sm font-semibold text-gray-900 mb-3">Support</h4>
-          <ul className="space-y-2">
-            {SUPPORT_LINKS.map((label) => (
-              <li key={label}>
-                <a href="#" className="text-sm text-gray-500 hover:text-gray-900 transition-colors">
-                  {label}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        {/* Legal */}
-        <div>
-          <h4 className="text-sm font-semibold text-gray-900 mb-3">Legal</h4>
-          <ul className="space-y-2">
-            {LEGAL_LINKS.map((label) => (
-              <li key={label}>
-                <a href="#" className="text-sm text-gray-500 hover:text-gray-900 transition-colors">
-                  {label}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        {/* Newsletter */}
-        <div className="lg:col-span-1">
-          <h4 className="text-sm font-semibold text-gray-900 mb-3">Newsletter</h4>
-          <p className="text-sm text-gray-500 mb-3">
-            Subscribe to get latest updates and exclusive offers.
-          </p>
-          <div className="flex items-center gap-2">
-            <input
-              type="email"
-              placeholder="Your Email"
-              className="flex-1 min-w-0 px-3 py-2 text-sm border border-gray-200 rounded-full outline-none focus:border-orange-400"
-            />
-            <button
-              type="button"
-              className="shrink-0 px-4 py-2 rounded-full bg-orange-500 text-white text-sm font-semibold hover:bg-orange-600 transition-colors"
-            >
-              Subscribe
-            </button>
+        {/* Bottom bar */}
+        <div className="footer-bottom">
+          <p>© {new Date().getFullYear()} TasteHouse. Todos os direitos reservados.</p>
+          <div className="footer-bottom-links">
+            <a href="#">Privacidade</a>
+            <a href="#">Termos</a>
+            <a href="#">Mapa do Site</a>
           </div>
-        </div>
-      </div>
-
-      {/* Bottom bar */}
-      <div className="border-t border-gray-100 mt-8 pt-6 flex flex-col sm:flex-row items-center justify-between gap-2">
-        <span className="text-xs text-gray-400">
-          © 2024 TasteHouse, All rights reserved.
-        </span>
-        <div className="flex items-center gap-4">
-          <a href="#" className="text-xs text-gray-400 hover:text-gray-600 transition-colors">
-            Privacy
-          </a>
-          <a href="#" className="text-xs text-gray-400 hover:text-gray-600 transition-colors">
-            Terms
-          </a>
-          <a href="#" className="text-xs text-gray-400 hover:text-gray-600 transition-colors">
-            Sitemap
-          </a>
         </div>
       </div>
     </footer>

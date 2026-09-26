@@ -1,0 +1,39 @@
+{
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+  "files.eol": "\n",
+  "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": true,
+
+  "javascript.preferences.quoteStyle": "single",
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "javascript.suggest.autoImports": true,
+
+  "eslint.useFlatConfig": true,
+  "eslint.validate": ["javascript", "javascriptreact"],
+  "eslint.workingDirectories": [{ "mode": "auto" }],
+
+  "css.lint.unknownAtRules": "ignore",
+  "tailwindCSS.includeLanguages": { "javascript": "javascriptreact" },
+  "emmet.includeLanguages": { "javascript": "javascriptreact" },
+  "editor.quickSuggestions": { "strings": "on" },
+
+  "files.exclude": {
+    "dist": true,
+    ".firebase": true,
+    "**/*.log": true
+  },
+  "search.exclude": {
+    "dist": true,
+    "package-lock.json": true
+  },
+  "files.watcherExclude": {
+    "**/node_modules/**": true,
+    "dist/**": true,
+    ".firebase/**": true
+  }
+}

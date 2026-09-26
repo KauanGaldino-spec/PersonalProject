@@ -1,0 +1,273 @@
+/* Shared styles for the admin "inbox" tabs: Reservations, Support, Reviews.
+   They are three near-identical list views, so they share one stylesheet
+   instead of duplicating the same rules in three files. */
+
+.admin-inbox {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.admin-inbox-top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.admin-inbox-summary {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: white;
+  border: 1px solid #F0F0F0;
+  border-radius: 999px;
+  padding: 0.5rem 1rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #5A5A5A;
+}
+
+.admin-inbox-summary strong {
+  color: #1A1A1A;
+}
+
+/* ── Filters ──────────────────────────────────────────────── */
+
+.admin-inbox-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  background: #F7F7F7;
+  padding: 0.25rem;
+  border-radius: 999px;
+}
+
+.admin-inbox-filter {
+  border: none;
+  background: transparent;
+  border-radius: 999px;
+  padding: 0.5rem 1rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #5A5A5A;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.admin-inbox-filter:hover {
+  color: #1A1A1A;
+}
+
+.admin-inbox-filter.active {
+  background: white;
+  color: var(--brand-color);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* ── Cards ────────────────────────────────────────────────── */
+
+.admin-inbox-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.admin-inbox-card {
+  background: white;
+  border: 1px solid #E0E0E0;
+  border-radius: 1rem;
+  padding: 1.25rem;
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+
+.admin-inbox-card:hover {
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.04);
+  border-color: #D6D6D6;
+}
+
+.admin-inbox-card--muted {
+  opacity: 0.7;
+}
+
+.admin-inbox-card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.admin-inbox-name {
+  margin: 0 0 0.15rem 0;
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #1A1A1A;
+  overflow-wrap: anywhere;
+}
+
+.admin-inbox-date {
+  font-size: 0.8rem;
+  color: #9E9E9E;
+  font-weight: 600;
+}
+
+.admin-inbox-badge {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.admin-inbox-badge--pending {
+  background: #FFF3CD;
+  color: #856404;
+}
+
+.admin-inbox-badge--confirmed {
+  background: #D4EDDA;
+  color: #155724;
+}
+
+.admin-inbox-badge--cancelled {
+  background: #F8D7DA;
+  color: #721C24;
+}
+
+.admin-inbox-badge--open {
+  background: #CCE5FF;
+  color: #004085;
+}
+
+.admin-inbox-badge--resolved {
+  background: #E2E3E5;
+  color: #41464B;
+}
+
+.admin-inbox-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 1.25rem;
+  font-size: 0.875rem;
+  color: #5A5A5A;
+  margin-bottom: 0.75rem;
+}
+
+.admin-inbox-meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  overflow-wrap: anywhere;
+}
+
+.admin-inbox-meta a {
+  color: var(--brand-color);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.admin-inbox-meta a:hover {
+  text-decoration: underline;
+}
+
+.admin-inbox-message {
+  margin: 0;
+  background: #FAFAFA;
+  border: 1px solid #F0F0F0;
+  border-radius: 0.75rem;
+  padding: 0.75rem 1rem;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: #1A1A1A;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.admin-inbox-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.admin-inbox-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  border-radius: 999px;
+  padding: 0.5rem 1rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: all 0.2s;
+}
+
+.admin-inbox-btn:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+.admin-inbox-btn--primary {
+  background: var(--brand-color);
+  color: white;
+}
+
+.admin-inbox-btn--primary:hover:not(:disabled) {
+  background: var(--brand-color-dark);
+}
+
+.admin-inbox-btn--ghost {
+  background: white;
+  border-color: #E0E0E0;
+  color: #1A1A1A;
+}
+
+.admin-inbox-btn--ghost:hover:not(:disabled) {
+  background: #F7F7F7;
+  border-color: #D6D6D6;
+}
+
+.admin-inbox-btn--danger {
+  background: white;
+  border-color: #F5C6CB;
+  color: #B02A37;
+}
+
+.admin-inbox-btn--danger:hover:not(:disabled) {
+  background: #F8D7DA;
+}
+
+.admin-inbox-empty {
+  text-align: center;
+  padding: 3rem 1.5rem;
+  background: white;
+  border: 1px dashed #E0E0E0;
+  border-radius: 1rem;
+  color: #9E9E9E;
+}
+
+.admin-inbox-empty strong {
+  display: block;
+  margin-bottom: 0.35rem;
+  font-size: 1.05rem;
+  color: #5A5A5A;
+}
+
+.admin-inbox-error {
+  margin: 0;
+  padding: 0.75rem 1rem;
+  border-radius: 0.75rem;
+  background: #FEF2F2;
+  border: 1px solid #FECACA;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #B91C1C;
+}
